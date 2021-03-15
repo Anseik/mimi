@@ -1,17 +1,22 @@
 <template>
-  <router-view />
+  <div>PW찾기 화면</div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-
+  name: 'FindPw',
   components: {
-    
-  },
 
+  },
   data: () => ({
     //
   }),
-};
+  methods: {
+
+  },
+}
 </script>
+
+<style>
+
+</style>
