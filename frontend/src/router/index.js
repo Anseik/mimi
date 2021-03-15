@@ -1,34 +1,43 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-// Routes
-import paths from "./paths";
+Vue.use(VueRouter)
 
-function route(path, view, name) {
-  return {
-    name: name || view,
-    path,
-    component: resolve => import(`@/views/${view}.vue`).then(resolve)
-  };
-}
+const routes = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/accounts/Login.vue')
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import('../views/accounts/Signup.vue')
+  },
+  {
+    path: '/findidpw',
+    name: 'FindIdPw',
+    component: () => import('../views/accounts/FindIdPw.vue')
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/Home.vue'),    
+    // 상단바와 하단바가 있는 views는 아래에 children으로 등록되어야 합니다.
+    children: [
+      {
+        path: '',
+        name: 'Main',
+        component: () => import('../views/Main.vue')
+      },
+    ]
+  },
+]
 
-Vue.use(Router);
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
 
-// Create a new router
-const router = new Router({
-  mode: "history",
-  routes: paths
-    .map(path => route(path.path, path.view, path.name))
-    .concat([{ path: "*", redirect: "/" }]),
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    }
-    if (to.hash) {
-      return { selector: to.hash };
-    }
-    return { x: 0, y: 0 };
-  }
-});
-
-export default router;
+export default router

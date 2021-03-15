@@ -1,13 +1,32 @@
 <template>
-  <v-container class="mt-5" fill-height>
-    <v-card-text class="text-center">
-      <p class="display-3 pa-2">🍜</p>
-      <p class="display-2 pa-5">코딩도 식후경</p>
-      <v-btn large color="blue lighten-1 white--text ma-5" rounded to="/search">검색하기</v-btn>
-    </v-card-text>
-  </v-container>
+  <v-app>
+    <TopBar />
+    <v-main>
+      <router-view />
+    </v-main>
+    <BottomBar />
+  </v-app>
 </template>
 
 <script>
-export default {};
+import TopBar from '@/components/common/TopBar.vue'
+import BottomBar from '@/components/common/BottomBar.vue'
+
+export default {
+  name: 'Home',
+  components: {
+    TopBar,
+    BottomBar,
+  },
+  data: () => ({
+    //
+  }),
+  methods: {
+
+  },
+}
 </script>
+
+<style>
+
+</style>
