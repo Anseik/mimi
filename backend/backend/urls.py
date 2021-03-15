@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from rest_framework import permissions
-from rest_framework_swagger.views import get_swagger_view
 
 # from drf_yasg.views import get_schema_view
 # from drf_yasg import openapi
@@ -43,7 +42,7 @@ from rest_framework_swagger.views import get_swagger_view
 
 # fmt: off
 urlpatterns = [
-    path('docs/', get_swagger_view(title='API Docs')),
+    
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
     path("member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
