@@ -24,3 +24,16 @@ npm run serve
 
 
 
+
+
+## 팀 역할
+
+**김동걸** : Backend
+
+**김유리** : Frontend
+
+**김지은** : Frontend
+
+**안동규** : Frontend
+
+**안세익** : Backend
