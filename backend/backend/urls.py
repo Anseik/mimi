@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from rest_framework import permissions
-from rest_framework_swagger.views import get_swagger_view
 
-# from drf_yasg.views import get_schema_view
-# from drf_yasg import openapi
+
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 
 # schema_view = get_schema_view(
@@ -28,22 +28,22 @@ from rest_framework_swagger.views import get_swagger_view
 #         title="Swagger mimi API",
 #         default_version = "v1",
 #         description="Swagger mimi API 문서",
-#         terms_of_service="https://www.google.com/policies/terms/", 
-#         contact=openapi.Contact(name="test", email="test@test.com"), 
-#         license=openapi.License(name="Test License"), 
-#     ), 
-#     public=True, 
-#     permission_classes=(permissions.AllowAny,), 
+#         terms_of_service="https://www.google.com/policies/terms/",
+#         contact=openapi.Contact(name="test", email="test@test.com"),
+#         license=openapi.License(name="Test License"),
+#     ),
+#     public=True,
+#     permission_classes=(permissions.AllowAny,),
 # )
 
-#app_name="member"
+# app_name="member"
 
 #router = routers.DefaultRouter()
 #router.register("members", member.api.MemberViewSet)
 
 # fmt: off
 urlpatterns = [
-    path('docs/', get_swagger_view(title='API Docs')),
+
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
     path("member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
