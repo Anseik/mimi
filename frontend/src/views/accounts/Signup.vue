@@ -1,17 +1,22 @@
 <template>
-  <router-view />
+  <div>회원가입</div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-
+  name: 'Signup',
   components: {
-    
-  },
 
+  },
   data: () => ({
     //
   }),
-};
+  methods: {
+
+  },
+}
 </script>
+
+<style>
+
+</style>

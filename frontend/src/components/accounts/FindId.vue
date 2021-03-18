@@ -1,17 +1,22 @@
 <template>
-  <router-view />
+  <div>ID찾기 화면</div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-
+  name: 'FindId',
   components: {
-    
-  },
 
+  },
   data: () => ({
     //
   }),
-};
+  methods: {
+
+  },
+}
 </script>
+
+<style>
+
+</style>

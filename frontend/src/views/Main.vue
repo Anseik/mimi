@@ -1,17 +1,22 @@
 <template>
-  <router-view />
+  <div>메인 화면</div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-
+  name: 'Main',
   components: {
-    
-  },
 
+  },
   data: () => ({
     //
   }),
-};
+  methods: {
+
+  },
+}
 </script>
+
+<style>
+
+</style>
