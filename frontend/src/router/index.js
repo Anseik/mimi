@@ -30,6 +30,11 @@ const routes = [
         name: 'Main',
         component: () => import('../views/Main.vue')
       },
+      // {
+      //   path: '',
+      //   name: 'Main',
+      //   component: () => import('../views/Main.vue')
+      // },
     ]
   },
 ]
