@@ -1,6 +1,5 @@
 <template>
 <v-app>
-
   <v-form>
     <v-container fluid style="width: 500px;">
       <v-row>
@@ -8,7 +7,7 @@
           cols="12"
           style="padding-bottom: 0;"
         >
-          <v-img
+          <!-- <v-img
             @click="$router.push({ name: 'Main' })"
             style="cursor: pointer;"
             src="@/assets/mimi_logo(blank).png"
@@ -16,7 +15,7 @@
             max-height="150"
             max-width="500"
           >
-          </v-img>
+          </v-img> -->
           
           <v-text-field
             solo
@@ -85,7 +84,7 @@
 <script>
 import axios from 'axios'
 
-import AccountsFooter from '../../components/accounts/AccountsFooter.vue'
+import AccountsFooter from '@/components/accounts/AccountsFooter.vue'
 export default {
   components: { AccountsFooter },
   name: 'Login',
@@ -113,38 +112,26 @@ export default {
   },
   methods: {
     login: function () {
-      axios.post('http://i4d106.p.ssafy.io:8088/login', {
+      axios.post('', {
         username: this.form.email,
         password: this.form.pw
       })
         .then(res => {
           localStorage.setItem('mimi-authorization', res.headers['mimi-authorization']);
           const token = localStorage.getItem('mimi-authorization')
-          axios.post('http://i4d106.p.ssafy.io:8080/user/login', this.form, {
+          axios.post('', this.form, {
             headers: {
               'mimi-authorization': token,
             }
           })
             .then(response => {
               this.$store.dispatch("LOGIN", response.data.data)
-              axios.get(`http://i4d106.p.ssafy.io:8080/user/cart/${this.form.email}`, {
-                headers: {
-                  'mimi-authorization': token,
-                }
-              })
-                .then(newres=> {
-                  this.$store.dispatch("SETWISHLIST", newres.data.data)
-                  if (this.$route.query.next) {
-                    this.$router.push({ name: this.$route.query.next })
-                  } else {
-                    this.$router.push({ name: 'Main' })
-                  }
-                })
             })
           // jwt token setting required
           
         })
         .catch(err => {
+          console.log(err)
           alert('로그인에 실패하였습니다. 비밀번호를 확인해주세요.')
         })
       

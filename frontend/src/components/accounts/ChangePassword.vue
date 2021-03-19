@@ -68,22 +68,21 @@ export default {
   methods: {
     changepassword() {
       const token = localStorage.getItem('mimi-authorization')
-      axios.put('http://i4d106.p.ssafy.io:8080/user/update', {
+      axios.put('', {
         email: this.email,
         pw: this.form.newpassword,
-        name: this.name,
-        phone: this.phone
       }, {
         headers: {
           'mimi-authorization': token,
         }
       })
-        .then(_ => {
-                this.$store
-                  .dispatch("LOGOUT")
-                  .then(() => {
-                    if (this.$route.path !== "/") this.$router.replace("/");
-                  })
+        .then(res => {
+          console.log(res)
+          this.$store
+            .dispatch("LOGOUT")
+            .then(() => {
+              if (this.$route.path !== "/") this.$router.replace("/");
+            })
         })
     },
   },

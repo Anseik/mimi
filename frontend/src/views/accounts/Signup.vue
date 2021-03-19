@@ -1,6 +1,5 @@
 <template>
 <v-app>
-
   <v-form>
     <v-container style="width: 500px;">
       <v-row>
@@ -8,7 +7,7 @@
           cols="12"
           style="padding-bottom: 0;"
         >
-          <v-img
+          <!-- <v-img
             @click="$router.push({ name: 'Main' })"
             style="cursor: pointer;"
             src="@/assets/mimi_logo(blank).png"
@@ -16,7 +15,7 @@
             max-height="150"
             max-width="500"
           >
-          </v-img>
+          </v-img> -->
           <strong>회원정보를 입력해주세요</strong>
           
           <v-text-field
@@ -68,24 +67,11 @@
             label="이름"
             v-model="form.name"
           ></v-text-field> 
-          <!-- <v-text-field
-            solo
-            flat
-            dense
-            outlined
-            required
-            prepend-inner-icon="mdi-cellphone"
-            :rules="[required_phonenumber,]"
-            label="휴대폰 번호"
-            v-model="forms.phonenumber"
-          ></v-text-field>  -->
         </v-col>
         <v-col cols="12">
           <v-divider></v-divider>
         </v-col>
           <SignupCheckbox :form="form" :enable="enable" />
-        
-
         <v-col>
           <AccountsFooter />
         </v-col>
@@ -128,9 +114,6 @@ export default {
     required_name() {
       return () => !!this.form.name || '이름을 정확히 입력하세요.'
     },
-    // required_phonenumber() {
-    //   return () => !!this.form.phonenumber || '휴대폰 번호를 정확하게 입력하세요.'
-    // },
     min_pw() {
       return () => this.form.pw.length >= 8 || '비밀번호를 8자 이상 작성해주세요.'
     },
