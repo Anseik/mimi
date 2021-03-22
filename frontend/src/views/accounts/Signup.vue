@@ -1,21 +1,11 @@
 <template>
-<v-app>
   <v-form>
-    <v-container style="width: 500px;">
+    <v-container>
       <v-row>
         <v-col
           cols="12"
-          style="padding-bottom: 0;"
+          class="pb-0"
         >
-          <!-- <v-img
-            @click="$router.push({ name: 'Main' })"
-            style="cursor: pointer;"
-            src="@/assets/mimi_logo(blank).png"
-            class="my-auto"
-            max-height="150"
-            max-width="500"
-          >
-          </v-img> -->
           <strong>회원정보를 입력해주세요</strong>
           
           <v-text-field
@@ -28,7 +18,7 @@
             :rules="[required_id, emailRules,]"
             label="아이디(이메일)"
             v-model="form.email"
-          ></v-text-field> 
+          ><v-btn></v-btn></v-text-field> 
           
           <v-text-field
             v-model="form.pw"
@@ -54,31 +44,21 @@
             v-model="rePassword"
             type="password"
             label="비밀번호 확인"
-            
-          ></v-text-field> 
-          <v-text-field
-            solo
-            flat
-            dense
-            outlined
-            required
-            prepend-inner-icon="mdi-account-outline"
-            :rules="[required_name,]"
-            label="이름"
-            v-model="form.name"
-          ></v-text-field> 
+          ></v-text-field>
         </v-col>
+
         <v-col cols="12">
           <v-divider></v-divider>
         </v-col>
-          <SignupCheckbox :form="form" :enable="enable" />
+        
+        <SignupCheckbox :form="form" :enable="enable" />
+
         <v-col>
           <AccountsFooter />
         </v-col>
       </v-row>
     </v-container>
   </v-form>
-</v-app>
 </template>
 
 <script>
@@ -111,9 +91,6 @@ export default {
     required_id() {
       return () => !!this.form.email || '아이디(이메일)를 입력해주세요.'
     },
-    required_name() {
-      return () => !!this.form.name || '이름을 정확히 입력하세요.'
-    },
     min_pw() {
       return () => this.form.pw.length >= 8 || '비밀번호를 8자 이상 작성해주세요.'
     },
@@ -124,7 +101,7 @@ export default {
       return () => (this.form.pw === this.rePassword) || '비밀번호가 일치하지 않습니다.'
     },
     enable() {
-      if (this.required_name() == true && this.emailRules() == true && this.passwordConfirmationRule() == true && this.min_pw() == true) {
+      if (this.emailRules() == true && this.passwordConfirmationRule() == true && this.min_pw() == true) {
         return true
       } else {
         return false
