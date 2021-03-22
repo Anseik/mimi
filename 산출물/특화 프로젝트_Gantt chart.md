@@ -17,6 +17,9 @@ gantt
     프리티어 설정            :done,    des2, 2021-03-15,2d
     설문조사				:active, 2021-03-16, 5d
     
+    section 디자인
+    화면 컨셉 및 디자인			:active, 2021-03-22, 3d 
+    
     section 유저 기능
     DB         :active,  des2, 2021-03-16, 3d
     백엔드            :active,    des1, 2021-03-16,4d
