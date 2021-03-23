@@ -30,6 +30,16 @@ const routes = [
         name: 'Main',
         component: () => import('../views/Main.vue')
       },
+      {
+        path: '/selectoption',
+        name: 'SelectOption',
+        component: () => import('../views/courses/SelectOption.vue')
+      },
+      {
+        path: '/travelingcourse',
+        name: 'TravelingCourse',
+        component: () => import('../views/courses/TravelingCourse.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
