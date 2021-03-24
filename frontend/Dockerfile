@@ -9,5 +9,5 @@ FROM nginx:stable-alpine as production-stage
 RUN rm /etc/nginx/conf.d/default.conf
 COPY ./homepage.conf /etc/nginx/conf.d/homepage.conf
 COPY --from=build-stage ./homepage/dist /usr/share/nginx/html/homepage
-EXPOSE 3000
+EXPOSE 80
 CMD ["nginx", "-9", "daemon off;"]
