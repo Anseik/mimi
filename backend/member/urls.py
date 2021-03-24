@@ -15,5 +15,7 @@ urlpatterns = [
     #아이디 찾기
     path("find-id/<str:id>,<str:birthday>", MemberFix.as_view({"get": "find_Id"})),
     #PW 변경
-    path("update-pw/<str:id>,<str:password>", MemberFix.as_view({"put": "change_Pw"}))
+    path("update-pw/<str:id>,<str:password>", MemberFix.as_view({"put": "change_Pw"})),
+
+    path("aaa", MemberFix.as_view({"get": "aaa"}))
 ]

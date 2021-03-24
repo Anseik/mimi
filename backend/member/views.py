@@ -20,7 +20,8 @@ import jwt
 
 #1. ID찾기, 2. PW찾기 - 이메일 중복여부 확인, 3. PW변경
 class MemberFix(viewsets.ModelViewSet, View):
-    
+    def aaa(self, request):
+        return JsonResponse({"message" : "EXISTS_ID"}, status=200)
     #ID찾기
     def find_Id(self,request, id='', birthday=''):
         serializer_class = MemberSerializer
