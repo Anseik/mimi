@@ -46,9 +46,9 @@ urlpatterns = [
     #api사양의 ReDoc보기
     #path("redoc/", schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     #api사양의 swagger-ui보기
-    path("mimi/swagger/", schema_view.with_ui('swagger', cache_timeout=0), name="schema-swagger-ui"),
-    path("mimi/admin/", admin.site.urls),
-    path("mimi/api/", include("api.urls")),
-    path("mimi/member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
+    path("swagger/", schema_view.with_ui('swagger', cache_timeout=0), name="schema-swagger-ui"),
+    path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
+    path("member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
 ]
 # fmt: on

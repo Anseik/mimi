@@ -36,7 +36,9 @@ DEFAULT_FROM_EMAIL    = my_settings.EMAIL["DEFAULT_FROM_EMAIL"]
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    my_settings.DOMAIN_URL
+    my_settings.DOMAIN_URL,
+    "127.0.0.1",
+    "localhost"
 ]
 
 
