@@ -1,18 +1,19 @@
 from django.urls import path
 from django.conf import settings
-from .views import MemberViewSet, MemberView, SignView, email_auth
+from .views import MemberView, SignView, MemberFix
 
 urlpatterns = [
-<<<<<<< HEAD
-    path("v1/member", MemberViewSet.as_view({"get": "list", "post": "add"}), name="members"),
+    
     #회원가입
     path("sign-up", MemberView.as_view({"post": "post"})),
+    #중복확인 및 이메일 인증
+    path("auth-email/<str:target_code>", MemberView.as_view({"get": "get"})),
     #로그인
     path("sign-in", SignView.as_view({"post": "post"})),
-    #이메일 인증
-    path("auth-email", email_auth.as_view({"get": "get"})),
-=======
-    path("v1", MemberViewSet.as_view({"get": "list", "post": "add"}), name="members"),
-    
->>>>>>> c62eeda0ece9a05640431984f4fb3037ac1f8012
+    #PW 찾기 이메일 인증
+    path("find-auth-email/<str:target_code>", MemberFix.as_view({"get": "email_Check"})),
+    #아이디 찾기
+    path("find-id/<str:id>,<str:birthday>", MemberFix.as_view({"get": "find_Id"})),
+    #PW 변경
+    path("update-pw/<str:id>,<str:password>", MemberFix.as_view({"put": "change_Pw"}))
 ]

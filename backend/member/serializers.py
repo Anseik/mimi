@@ -12,9 +12,10 @@ class MemberSerializer(serializers.ModelSerializer):
         #'__all__' 사용시 모든 필드
         fields = ("id", "password", "gender", "birthday")
 
-class EmailAuthSerializer(serializers.ModelSerializer):
-    id = serializers.EmailField(help_text="인증할 이메일")
+class ChangeMemberPasswordSerializer(serializers.Serializer):
+    id = serializers.EmailField(help_text="변경할 이메일")
+    password = serializers.CharField(help_text="비밀번호")
     class Meta:
         member = Member.objects.all()
         model = Member
-        fields = ("id", "gender")
+        fields = ("id", "password")
