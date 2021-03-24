@@ -27,8 +27,7 @@ pipeline {
                 sh 'docker run -d --name frontend \
                 -p 80:80 \
                 -p 443:443 \
-                -v
-                /home/ubuntu/ssl/:/var/jenkins_home/workspace/mimi/sslkey/ \
+                -v /home/ubuntu/ssl/:/var/jenkins_home/workspace/mimi/sslkey/ \
                 --network mimiproject \
                 frontend:latest'
                 sh 'docker run -d --name backend \
