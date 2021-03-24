@@ -49,6 +49,6 @@ urlpatterns = [
     path("mimi/swagger/", schema_view.with_ui('swagger', cache_timeout=0), name="schema-swagger-ui"),
     path("mimi/admin/", admin.site.urls),
     path("api/", include("api.urls")),
-    path("member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
+    path("mimi/member/", include(("member.urls", "member"))) #member 앱의 세부 url은 member앱의 urls에서 관리
 ]
 # fmt: on
