@@ -35,7 +35,9 @@ DEFAULT_FROM_EMAIL    = my_settings.EMAIL["DEFAULT_FROM_EMAIL"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    my_settings.DOMAIN_URL
+]
 
 
 # Application definition
