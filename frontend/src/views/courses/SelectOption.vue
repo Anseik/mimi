@@ -74,7 +74,7 @@
             <v-btn
             class="ma-2"
             color="#FFFBE6"
-            @click="e1 = 1"
+            @click="moveToTravelingCourse"
             >
             <span class="ts">코스 추천 받기</span>
             </v-btn>
@@ -90,6 +90,7 @@ import SecondOption from '@/components/courses/SecondOption.vue'
 import ThirdOption from '@/components/courses/ThirdOption.vue'
 
 export default {
+    name: 'SelectOption',
     components: {
         FirstOption,
         SecondOption,
@@ -99,6 +100,12 @@ export default {
       return {
         e1: 1,
       }
+    },
+    methods: {
+        moveToTravelingCourse() {
+        console.log('여행코스로 이동')
+        this.$router.push({name : "TravelingCourse"})
+        },
     },
   }
 </script>

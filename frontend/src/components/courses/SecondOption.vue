@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'SecondOption',
     data: () => ({
       tags: [
         '서울',

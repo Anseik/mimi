@@ -7,6 +7,7 @@
 <script>
 import Category from '@/components/restaurants/Category.vue'
 export default {
+    name: 'CourseCheck',
     components: {
         Category,
     },
