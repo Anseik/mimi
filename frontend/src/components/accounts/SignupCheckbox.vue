@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style scoped>
-  >>> .v-messages {
+  .v-messages {
     display: none;
   }
 </style>
