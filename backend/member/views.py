@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from django.views import View
 from django.http import Http404, HttpResponse, JsonResponse
 from .models import Member
-from .serializers import MemberSerializer, ChangeMemberPasswordSerializer
+from .serializers import MemberSerializer, ChangeMemberPasswordSerializer, SearchMemberIdSerializer
 from backend.settings import SECRET_KEY, EMAIL_HOST_USER
 from .token import email_auth_num
 from django.core.mail import EmailMessage
@@ -24,17 +24,20 @@ class MemberFix(viewsets.ModelViewSet, View):
         return JsonResponse({"message" : "EXISTS_ID"}, status=200)
     #ID찾기
     def find_Id(self,request, id='', birthday=''):
-        serializer_class = MemberSerializer
+        serializer_class = SearchMemberIdSerializer
         print(birthday)
-        #전체값에서 id와 birthday값 비교해야함
-        if Member.objects.filter(id = id).exists():
-            return JsonResponse({"message" : "EXISTS_ID"}, status=200)
+        if Member.objects.filter(birthday = birthday).exists():
+            #전체값에서 id와 birthday값 비교해야함
+            print("날짜존재")
+            if Member.objects.filter(id = id).exists():
+                return JsonResponse({"message" : "EXISTS_ID"}, status=200)
+            return JsonResponse({"message" : "NOT_EXISTS_ID"}, status=400)
         return JsonResponse({"message" : "NOT_EXISTS_ID"}, status=400)
     #인증 이메일 전송
     def email_Check(self, request, target_code=''):
         serializer_class = MemberSerializer
         try:
-
+            
             if Member.objects.filter(id = target_code).exists():
 
                 #전처리 한번 필요
@@ -80,13 +83,8 @@ class MemberView(viewsets.GenericViewSet, View):
             user_email = data["id"]
             #전처리 한번 필요
             
-            curr_max_num = Member.objects.all()
-            print("확인")
-            print(curr_max_num)
-            if(curr_max_num==None):
-                curr_max_num = 0
-            else:
-                curr_max_num = 1
+            curr_max_num = Member.objects.all().count() + 949437
+            
             Member.objects.create(
                 num = curr_max_num,
                 id = data["id"],
