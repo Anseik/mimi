@@ -16,18 +16,28 @@
           v-else
           :key="item.title"
         >
-          <v-list-item-image>
+
+
+          <!-- <v-list-item-image>
             <v-img :src="item.image"></v-img>
+          </v-list-item-image> -->
+
+          <!--발표용-->
+          <div>
+          <v-list-item-image>
+            <v-img src="@/assets/busan.jpg" style="width:100px"></v-img>
           </v-list-item-image>
-          
-          <v-list-item-content style="margin-left:-150px;">
-            <v-list-item-title v-html="item.title"></v-list-item-title>
-            <v-list-item-address v-html="item.address"></v-list-item-address>
-            <v-list-item-opentime v-html="item.opentime"></v-list-item-opentime>
-            <v-list-item-avgscore v-html="item.avgscore"></v-list-item-avgscore>
-          </v-list-item-content>
+          </div>
+          <!--발표용-->
+            <v-list-item-content style="margin-left:5px; text-align: left;">
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-address v-html="item.address"></v-list-item-address>
+              <v-list-item-opentime v-html="item.opentime"></v-list-item-opentime>
+              <v-list-item-avgscore v-html="item.avgscore"></v-list-item-avgscore>
+            </v-list-item-content>
 
           <!-- 버튼&모달 start -->
+          
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -89,19 +99,19 @@ export default {
         dialog: false,
         items: [
           {
-            image: 'https://picsum.photos/100',
-            title: '식당이름',
-            address: '주소',
-            opentime: '영업시간',
-            avgscore: '평점',
+            image: '@/assets/busan.jpg',
+            title: '해운대가야밀면',
+            address: '부산관영시 해운대구 좌동 좌동순환로 27',
+            opentime: '9:10 ~ 20:50',
+            avgscore: '4.0',
           },
           { divider: true, inset: true },
           {
-            image: 'https://picsum.photos/100',
-            title: '식당이름',
-            address: '주소',
-            opentime: '영업시간',
-            avgscore: '평점',        },
+            image: '@/assets/busan2.jpg',
+            title: '수변최고돼지국밥',
+            address: '부산광역시 수영구 민락동 완안해변로 370',
+            opentime: '8:00 ~ 21:30',
+            avgscore: '4.4',        },
           { divider: true, inset: true },
         ],
       }
