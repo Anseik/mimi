@@ -45,6 +45,12 @@ const routes = [
         name: 'TravelingCourse',
         component: () => import('../views/courses/TravelingCourse.vue')
       },
+      {
+
+        path: '/Category',
+        name: 'Category',
+        component: () => import('../components/restaurants/Category.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
