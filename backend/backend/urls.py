@@ -38,7 +38,6 @@ schema_view = get_schema_view(
 )
 
 
-
 # fmt: off
 urlpatterns = [
     #api사양의 JSON, YAML보기

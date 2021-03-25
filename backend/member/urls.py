@@ -3,7 +3,6 @@ from django.conf import settings
 from .views import MemberView, SignView, MemberFix
 
 urlpatterns = [
-    
     #회원가입
     path("sign-up", MemberView.as_view({"post": "post"})),
     #중복확인 및 이메일 인증

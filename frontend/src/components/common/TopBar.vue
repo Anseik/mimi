@@ -10,6 +10,7 @@
   </div>
 </template>
 
+
 <script>
 export default {
   name: 'TopBar',
@@ -20,7 +21,10 @@ export default {
     //
   }),
   methods: {
-
+    moveToDiary() {
+      console.log('다이어리로 이동')
+      this.$router.push({name : "Diary"})
+    }
   },
 }
 </script>

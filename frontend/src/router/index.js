@@ -31,6 +31,11 @@ const routes = [
         component: () => import('../views/Main.vue')
       },
       {
+        path: '/diary',
+        name: 'Diary',
+        component: () => import('../views/Diary.vue')
+      },
+      {
         path: '/selectoption',
         name: 'SelectOption',
         component: () => import('../views/courses/SelectOption.vue')
@@ -39,6 +44,12 @@ const routes = [
         path: '/travelingcourse',
         name: 'TravelingCourse',
         component: () => import('../views/courses/TravelingCourse.vue')
+      },
+      {
+
+        path: '/Category',
+        name: 'Category',
+        component: () => import('../components/restaurants/Category.vue')
       },
       // {
       //   path: '',
