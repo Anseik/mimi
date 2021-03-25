@@ -25,11 +25,17 @@ class RecommendTravle(viewsets.GenericViewSet, View):
     def user_option(self, request):
         
         data = json.loads(request.body)
-        print(data["user_date"])
-        print(data["user_location"])
-        print(data["user_thema"])
+        #user_date
+        #user_location
+        #user_thema
+        #여행 지역 기준으로 조회
 
+        #여행 테마 기준으로 여행지 1곳 선정
 
+        #다른 여행지 추가
+
+        #여행지 거리별 최적화
+#
 
 # class OptimizationRoad(view):
 #     def 
