@@ -46,10 +46,9 @@ const routes = [
         component: () => import('../views/courses/TravelingCourse.vue')
       },
       {
-
-        path: '/Category',
-        name: 'Category',
-        component: () => import('../components/restaurants/Category.vue')
+        path: '/coursecheck',
+        name: 'CourseCheck',
+        component: () => import('../views/courses/CourseCheck.vue')
       },
       // {
       //   path: '',

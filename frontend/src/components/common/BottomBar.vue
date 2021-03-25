@@ -1,17 +1,11 @@
 <template>
-  <v-bottom-navigation
-    color="primary"
-  >
-    <!-- <v-btn style="margin-right: 3px"
-      :value="value"
-      color="#3949AB"
-    ></v-btn> -->
-    <v-btn plain style="margin-top:8px; margin-right: 3px;" color="#356859">
+  <v-bottom-navigation fixed>
+    <v-btn plain @click="moveToMain" style="margin-top:8px; margin-right: 3px;" color="#356859">
       <span>홈</span>
       <i class="fas fa-home fa-3x" style="color:#3949AB"></i>
     </v-btn>
 
-    <v-btn plain style="margin-top:8px; margin-left: 3px; margin-right: 3px">
+    <v-btn plain @click="moveToCourse" style="margin-top:8px; margin-left: 3px; margin-right: 3px">
       <span>여행코스</span>
       <i class="fas fa-suitcase-rolling fa-3x" style="color:#3949AB"></i>
     </v-btn>
@@ -41,7 +35,19 @@ export default {
     moveToDiary() {
       console.log('다이어리로 이동')
       this.$router.push({name : "Diary"})
-    }
+    },
+    moveToMain() {
+      console.log('메인으로 이동')
+      this.$router.push({name : "Main"})
+    },
+    moveToCourse() {
+      console.log('여행코스로 이동')
+      this.$router.push({name : "SelectOption"})
+    },
+    // moveToTimeline() {
+    //   console.log('타임라인으로 이동')
+    //   this.$router.push({name : ""})
+    // },
   },
 }
 </script>
