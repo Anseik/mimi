@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar class="nav" style="height: 50px">
+    <v-toolbar class="nav" style="height: 50px" :elevation="0">
       <v-toolbar-title
         style="margin-top: -1%; margin-left: 35%;"
       >
