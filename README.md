@@ -145,11 +145,11 @@ npm run serve
 
 **Wire Frame**
 
-<img src="README.assets/image-20210325163437505.png" alt="image-20210325163437505" style="zoom:50%;" /><img src="README.assets/image-20210325163532795.png" alt="image-20210325163532795" style="zoom:50%;" /><img src="README.assets/image-20210325163634153.png" alt="image-20210325163634153" style="zoom:50%;" />
+<img src="README.assets/image-20210325163437505.png" alt="image-20210325163437505" style="zoom: 33%;" /><img src="README.assets/image-20210325163532795.png" alt="image-20210325163532795" style="zoom: 33%;" /><img src="README.assets/image-20210325163634153.png" alt="image-20210325163634153" style="zoom: 33%;" />
 
-<img src="README.assets/image-20210325163727704.png" alt="image-20210325163727704" style="zoom: 50%;" /><img src="README.assets/image-20210325163819011.png" alt="image-20210325163819011" style="zoom:50%;" /><img src="README.assets/image-20210325163840732.png" alt="image-20210325163840732" style="zoom:50%;" />
+<img src="README.assets/image-20210325163727704.png" alt="image-20210325163727704" style="zoom: 33%;" /><img src="README.assets/image-20210325163819011.png" alt="image-20210325163819011" style="zoom: 33%;" /><img src="README.assets/image-20210325163840732.png" alt="image-20210325163840732" style="zoom: 33%;" />
 
-<img src="README.assets/image-20210325163907447.png" alt="image-20210325163907447" style="zoom:50%;" /><img src="README.assets/image-20210325163949708.png" alt="image-20210325163949708" style="zoom:50%;" /><img src="README.assets/image-20210325164030303.png" alt="image-20210325164030303" style="zoom:50%;" />
+<img src="README.assets/image-20210325163907447.png" alt="image-20210325163907447" style="zoom: 33%;" /><img src="README.assets/image-20210325163949708.png" alt="image-20210325163949708" style="zoom: 33%;" /><img src="README.assets/image-20210325164030303.png" alt="image-20210325164030303" style="zoom: 33%;" />
 
 ### 📆일정
 
