@@ -1,15 +1,15 @@
 <template>
   <div class="text-center">
     <v-row style="margin-top: 5px;">
-      <v-menu>
+      <v-menu >
         <template v-slot:activator="{ attrs, on }">
           <v-chip
             color="indigo darken-3"
+            class="ma-3"
             v-bind="attrs"
             v-on="on"
             outlined
-            rounded
-          >
+            rounded>
             카테고리
           </v-chip>
         </template>
@@ -24,28 +24,30 @@
           </v-list-item>
         </v-list>
       </v-menu>
+    
+
+      <v-chip
+        class="ma-3"
+        color="indigo darken-3"
+        outlined
+      >
+        <v-icon left>
+          mdi-cancel
+        </v-icon>
+        최근 음식 제외
+      </v-chip>
+      <v-chip
+        class="ma-3"
+        color="indigo darken-3"
+        outlined
+      >
+        <v-icon left>
+          mdi-star
+        </v-icon>
+        별점 많은 순
+      </v-chip>
     </v-row>
 
-    <v-chip
-      class="ma-2"
-      color="indigo darken-3"
-      outlined
-    >
-      <v-icon left>
-        mdi-cancel
-      </v-icon>
-      최근 음식 제외
-    </v-chip>
-    <v-chip
-      class="ma-2"
-      color="indigo darken-3"
-      outlined
-    >
-      <v-icon left>
-        mdi-star
-      </v-icon>
-      별점 많은 순
-    </v-chip>
     <v-chip
       class="ma-2"
       color="indigo darken-3"
@@ -64,12 +66,20 @@
       </v-icon>
       재방문 많은 순
     </v-chip>
+    <br>
+    <br>
+    <RestaurantList></RestaurantList>
   </div>
 </template>
 
 <script>
+import RestaurantList from '@/components/restaurants/RestaurantList.vue';
+
 export default {
   name: 'Nearby',
+  components: {
+    RestaurantList
+  },
   data: () => ({
       items: ['한식', '양식', '중식', '일식'],
     }),
