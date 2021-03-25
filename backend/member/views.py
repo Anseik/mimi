@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from django.views import View
 from django.http import Http404, HttpResponse, JsonResponse
 from .models import Member
-from .serializers import MemberSerializer, ChangeMemberPasswordSerializer
+from .serializers import MemberSerializer, ChangeMemberPasswordSerializer, SearchMemberIdSerializer
 from backend.settings import SECRET_KEY, EMAIL_HOST_USER
 from .token import email_auth_num
 from django.core.mail import EmailMessage
@@ -24,7 +24,7 @@ class MemberFix(viewsets.ModelViewSet, View):
         return JsonResponse({"message" : "EXISTS_ID"}, status=200)
     #ID찾기
     def find_Id(self,request, id='', birthday=''):
-        serializer_class = MemberSerializer
+        serializer_class = SearchMemberIdSerializer
         print(birthday)
         if Member.objects.filter(birthday = birthday).exists():
             #전체값에서 id와 birthday값 비교해야함
