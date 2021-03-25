@@ -17,7 +17,7 @@
       <i class="fas fa-camera-retro fa-3x"></i>
     </v-btn>
 
-    <v-btn style="margin-left: 3px">
+    <v-btn style="margin-left: 3px" @click="moveToDiary">
       <span>다이어리</span>
       <i class="far fa-calendar-alt fa-3x"></i>
     </v-btn>
@@ -34,7 +34,10 @@ export default {
     //
   }),
   methods: {
-
+    moveToDiary() {
+      console.log('다이어리로 이동')
+      this.$router.push({name : "Diary"})
+    }
   },
 }
 </script>

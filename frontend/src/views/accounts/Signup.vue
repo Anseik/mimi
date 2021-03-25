@@ -88,11 +88,11 @@
               >
                 <v-radio
                   label="남성"
-                  value="1"
+                  value="0"
                 ></v-radio>
                 <v-radio
                   label="여성"
-                  value="2"
+                  value="1"
                 ></v-radio>
               </v-radio-group>
             </v-col>
@@ -161,6 +161,8 @@
 <script>
 import SignupCheckbox from '../../components/accounts/SignupCheckbox.vue'
 import AccountsFooter from '../../components/accounts/AccountsFooter.vue'
+import axios from 'axios'
+
 export default {
   components: { AccountsFooter, SignupCheckbox },
   name: 'Signup',
@@ -182,6 +184,7 @@ export default {
     sendCertNum() {
       console.log('인증번호 발송')
       this.showCert = true
+      axios.get(`http://127.0.0.1:8000/mimi/member/auth-email/${this.form.email}`)
     }
   },
   computed: {
