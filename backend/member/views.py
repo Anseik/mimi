@@ -80,13 +80,13 @@ class MemberView(viewsets.GenericViewSet, View):
             user_email = data["id"]
             #전처리 한번 필요
             
-            curr_max_num = Member.objects.all()
+            curr_max_num = Member.objects.all().count() + 949437
             print("확인")
             print(curr_max_num)
-            if(curr_max_num==None):
-                curr_max_num = 0
-            else:
-                curr_max_num = 1
+            # if (curr_max_num == None):
+            #     curr_max_num = 949437
+            # else:
+            #     curr_max_num = curr_max_num + 1
             Member.objects.create(
                 num = curr_max_num,
                 id = data["id"],
