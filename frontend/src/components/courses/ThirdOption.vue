@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'ThirdOption',
     data: () => ({
       tags: [
         '산',
