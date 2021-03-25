@@ -31,6 +31,11 @@ const routes = [
         component: () => import('../views/Main.vue')
       },
       {
+        path: '/diary',
+        name: 'Diary',
+        component: () => import('../views/Diary.vue')
+      },
+      {
         path: '/selectoption',
         name: 'SelectOption',
         component: () => import('../views/courses/SelectOption.vue')

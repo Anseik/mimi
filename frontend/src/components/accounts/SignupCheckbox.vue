@@ -28,10 +28,7 @@
               </v-container>
           </v-list-item-title>
         </v-list-item-content>
-
-
       </v-list-item>
-
     </v-card>
   </v-col>
 
@@ -100,7 +97,6 @@ export default {
             axios.post(``, {
               username: this.form.email,
               password: this.form.pw,
-              role: 'USER',
             }, {
               headers: {
                 'mimi-authorization': "",

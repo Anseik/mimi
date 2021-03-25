@@ -1,6 +1,5 @@
 <template>
   <v-bottom-navigation
-    :value="value"
     color="primary"
   >
     <v-btn style="margin-right: 3px">
