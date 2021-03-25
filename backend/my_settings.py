@@ -5,7 +5,7 @@ DATABASES = {
         'NAME': 'mimi',
         'USER': 'mimi',
         'PASSWORD': 'mimissafy',
-        'HOST': 'j4d108.p.ssafy.io',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
