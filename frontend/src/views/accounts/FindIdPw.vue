@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2><span @click="showFindId">ID찾기 / </span><span @click="showFindPw">PW 찾기</span></h2>
+    <h1 class="text-center mt-16"><span @click="showFindId">ID찾기 / </span><span @click="showFindPw">PW 찾기</span></h1>
     <FindId v-if="isFindId" />
     <FindPw v-if="isFindPw" />
   </div>

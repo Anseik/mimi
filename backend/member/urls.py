@@ -3,7 +3,6 @@ from django.conf import settings
 from .views import MemberView, SignView, MemberFix
 
 urlpatterns = [
-    
     #회원가입
     path("sign-up", MemberView.as_view({"post": "post"})),
     #중복확인 및 이메일 인증
@@ -15,5 +14,7 @@ urlpatterns = [
     #아이디 찾기
     path("find-id/<str:id>,<str:birthday>", MemberFix.as_view({"get": "find_Id"})),
     #PW 변경
-    path("update-pw/<str:id>,<str:password>", MemberFix.as_view({"put": "change_Pw"}))
+    path("update-pw/<str:id>,<str:password>", MemberFix.as_view({"put": "change_Pw"})),
+
+    path("aaa", MemberFix.as_view({"get": "aaa"}))
 ]
