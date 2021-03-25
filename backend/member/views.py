@@ -3,10 +3,12 @@ from rest_framework.response import Response
 from django.views import View
 from django.http import Http404, HttpResponse, JsonResponse
 from .models import Member
-from .serializers import MemberSerializer, EmailAuthSerializer
+from .serializers import MemberSerializer, ChangeMemberPasswordSerializer
 from backend.settings import SECRET_KEY, EMAIL_HOST_USER
 from .token import email_auth_num
 from django.core.mail import EmailMessage
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
 import json
 import bcrypt
 import jwt
@@ -15,21 +17,55 @@ import jwt
 #GenericViewSet -> get_queryset, get_object사용
 
 # Create your views here.
-#이메일 인증
-class email_auth(viewsets.GenericViewSet, View):
-    serializer_class = EmailAuthSerializer
-    def get(self, request):
-        data = json.loads(request.body)
-        user_email = data["id"]
-        #전처리 한번 필요
-        token = email_auth_num()
-        message = f"인증번호는 {token} 입니다."
-        mail_title = "mimi 이메일 인증 메일입니다."
-        email = EmailMessage(mail_title, message, to=[user_email])
-        email.send()
 
+#1. ID찾기, 2. PW찾기 - 이메일 중복여부 확인, 3. PW변경
+class MemberFix(viewsets.ModelViewSet, View):
+    def aaa(self, request):
+        return JsonResponse({"message" : "EXISTS_ID"}, status=200)
+    #ID찾기
+    def find_Id(self,request, id='', birthday=''):
+        serializer_class = MemberSerializer
+        print(birthday)
+        #전체값에서 id와 birthday값 비교해야함
+        if Member.objects.filter(id = id).exists():
+            return JsonResponse({"message" : "EXISTS_ID"}, status=200)
+        return JsonResponse({"message" : "NOT_EXISTS_ID"}, status=400)
+    #인증 이메일 전송
+    def email_Check(self, request, target_code=''):
+        serializer_class = MemberSerializer
+        try:
 
-#회원가입
+            if Member.objects.filter(id = target_code).exists():
+
+                #전처리 한번 필요
+                token = email_auth_num()
+                message = f"인증번호는 {token} 입니다."
+                mail_title = "mimi 이메일 인증 메일입니다."
+                email = EmailMessage(mail_title, message, to=[target_code])
+                email.send()
+                return JsonResponse({"message" : token},status=200)
+            return JsonResponse({"message" : "NOT_EXISTS_ID"}, status=400)
+
+        except KeyError:
+            return JsonResponse({"message" : "INVALID_KEYS"},status=400)
+    #패스워드 변경
+    def change_Pw(self, request, id='', password=''):
+        serializer_class = ChangeMemberPasswordSerializer
+        
+        try:
+
+            if Member.objects.filter(id = id).exists():
+                user = Member.objects.get(id=id)
+                password = bcrypt.hashpw(password.encode("UTF-8"), bcrypt.gensalt()).decode("UTF-8")
+                user.password = password
+                user.save()
+                return HttpResponse(status=200)
+            return JsonResponse({"message" : "NOT_EXISTS_ID"},status=400)
+        except KeyError:
+            return JsonResponse({"message" : "INVALID_KEYS"},status=400)
+        
+
+#회원가입, 이메일 중복여부
 class MemberView(viewsets.GenericViewSet, View):
     #Swagger 설명을 위해 필요
     serializer_class = MemberSerializer
@@ -61,12 +97,21 @@ class MemberView(viewsets.GenericViewSet, View):
             return HttpResponse(status=200)
         except KeyError:
             return JsonResponse({"message" : "INVALID_KEYS"},status=400)
-    #id중복여부 api
-    def get(self, request):
+    #id중복여부 및 인증이메일 전송 api
+    def get(self, request, target_code=''):
         try:
-            if Member.objects.filter(id = data["id"]).exists():
+
+            if Member.objects.filter(id = target_code).exists():
                 return JsonResponse({"message" : "EXISTS_ID"}, status=400)
-            return JsonResponse({"message" : "ALLOW"}, status=200)
+            
+            #전처리 한번 필요
+            token = email_auth_num()
+            message = f"인증번호는 {token} 입니다."
+            mail_title = "mimi 이메일 인증 메일입니다."
+            email = EmailMessage(mail_title, message, to=[target_code])
+            email.send()
+            return JsonResponse({"message" : token},status=200)
+            
 
         except KeyError:
             return JsonResponse({"message" : "INVALID_KEYS"},status=400)
@@ -92,21 +137,5 @@ class SignView(viewsets.GenericViewSet,View):
         except KeyError:
             return JsonResponse({"message" : "INVALID_KEYS"}, status=400)
 
-class MemberViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, View):
-    serializer_class = MemberSerializer
-    def get_queryset(self):
-        conditions = {
-            "id" : self.kwargs.get("Member_num", None),
-            "password" : self.request.GET.get("password", None),
-            "gender" : self.request.GET.get("gender", None),
-            "birthday" : self.request.GET.get("birthday", None)
-        }
-        conditions = {
-            Key : val for key, val in conditions.items() if val is not None
-        }
-        members = Member.objects.filter(**conditions)
-        if not members.exists():
-            raise Http404
-        return members
 
         

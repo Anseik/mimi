@@ -5,13 +5,13 @@ DATABASES = {
         'NAME': 'mimi',
         'USER': 'mimi',
         'PASSWORD': 'mimissafy',
-        'HOST': 'localhost',
+        'HOST': 'j4d108.p.ssafy.io',
         'PORT': '3306',
     }
 }
 
 SECRET_KEY = "$yg2c-8-8cszt%3k$b=3wwc^j1g%gn)wj%yldz)6jd(ez80u-s"
-
+DOMAIN_URL = "j4d108.p.ssafy.io"
 EMAIL = {
     'EMAIL_BACKEND'         :'django.core.mail.backends.smtp.EmailBackend',
     'EMAIL_USE_TLS'         :True,
