@@ -19,23 +19,6 @@
     <div v-else-if="!isNearby">
     <Keyword></Keyword>
     </div>
-
-
-
-    <!-- <v-card >
-    <v-app-bar
-      absolute
-      color="#6A76AB"
-      dark
-    >
-      <template>
-        <v-tabs align-with-title>
-          <v-tab style="margin-left: 20px;">Tab 1</v-tab>
-          <v-tab>Tab 2</v-tab>
-        </v-tabs>
-      </template>
-    </v-app-bar>
-  </v-card> -->
   </div>
   
 </template>
