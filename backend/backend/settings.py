@@ -82,6 +82,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://j4d108.p.ssafy.io",
     "http://localhost:8000",
     "http://localhost:8080",
+    "http://192.168.0.4:8080"
 ]
 
 CORS_ALLOW_METHODS  =  [ 
