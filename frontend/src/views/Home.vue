@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import TopBar from '@/components/common/TopBar.vue'
 import BottomBar from '@/components/common/BottomBar.vue'
 
@@ -24,6 +25,16 @@ export default {
   methods: {
 
   },
+  computed: {
+    ...mapState([
+      'login'
+    ])
+  },
+  created() {
+    if (this.login == false) {
+      this.$router.push({name: 'Login'})
+    }
+  }
 }
 </script>
 

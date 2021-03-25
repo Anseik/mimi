@@ -6,12 +6,16 @@
       >
         <label>미미여지도</label>
       </v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon @click="logout"><v-icon>mdi-account-arrow-right </v-icon></v-btn>
     </v-toolbar>
   </div>
 </template>
 
-
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'TopBar',
   components: {
@@ -21,11 +25,17 @@ export default {
     //
   }),
   methods: {
-    moveToDiary() {
-      console.log('다이어리로 이동')
-      this.$router.push({name : "Diary"})
+    logout() {
+      this.$store.dispatch('LOGOUT')
+      this.$router.push({name: 'Login'})
     }
   },
+  computed: {
+    ...mapState([
+      'login',
+      'user',
+    ])
+  }
 }
 </script>
 

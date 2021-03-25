@@ -1,11 +1,5 @@
 <template>
-  <v-bottom-navigation
-    color="primary"
-  >
-    <v-btn style="margin-right: 3px"
-    :value="value"
-    color="#3949AB"
-    > 
+  <v-bottom-navigation>
     <v-btn plain style="margin-top:8px; margin-right: 3px;" color="#356859">
       <span>홈</span>
       <i class="fas fa-home fa-3x" style="color:#3949AB"></i>
@@ -21,7 +15,7 @@
       <i class="fas fa-camera-retro fa-3x" style="color:#3949AB"></i>
     </v-btn>
 
-    <v-btn plain style="margin-top:8px; margin-left: 3px">
+    <v-btn plain @click="moveToDiary" style="margin-top:8px; margin-left: 3px">
       <span>다이어리</span>
       <i class="far fa-calendar-alt fa-3x" style="color:#3949AB"></i>
     </v-btn>
@@ -38,7 +32,10 @@ export default {
     //
   }),
   methods: {
-
+    moveToDiary() {
+      console.log('다이어리로 이동')
+      this.$router.push({name : "Diary"})
+    }
   },
 }
 </script>

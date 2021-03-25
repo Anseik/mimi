@@ -91,25 +91,26 @@ export default {
       }
     },
     signup() {
-      axios.post(`http://i4d106.p.ssafy.io:8080/user/signup`, this.form)
+      axios.post(`http://127.0.0.1:8000/mimi/member/sign-up`, this.form)
         .then(res => {
-          if (res.data.response == 'success') {
-            axios.post(``, {
-              username: this.form.email,
-              password: this.form.pw,
-            }, {
-              headers: {
-                'mimi-authorization': "",
-              }
-            })
-              .then(response => {
-                console.log(response)
-                this.$router.push( {name: 'Login'} )
-              })
-          } else {
-            // alert
-            alert('이미 등록된 이메일입니다. 다른 이메일을 사용해주세요.')
-          }
+          console.log(res)
+          alert('회원가입 성공')
+          this.$router.push({name: 'Login'})
+          // axios.post(``, {
+          //   username: this.form.id,
+          //   password: this.form.password,
+          // }, {
+          //   headers: {
+          //     'mimi-authorization': "",
+          //   }
+          // })
+          //   .then(response => {
+          //     console.log(response)
+          //     this.$router.push( {name: 'Login'} )
+          //   })
+        })
+        .catch(err => {
+          console.log(err)
         })
     }
   }
