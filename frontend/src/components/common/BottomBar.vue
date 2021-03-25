@@ -5,7 +5,7 @@
     <v-btn style="margin-right: 3px"
     :value="value"
     color="#3949AB"
-    > 
+    ></v-btn>
     <v-btn plain style="margin-top:8px; margin-right: 3px;" color="#356859">
       <span>홈</span>
       <i class="fas fa-home fa-3x" style="color:#3949AB"></i>
