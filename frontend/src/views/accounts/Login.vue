@@ -21,7 +21,7 @@
               prepend-inner-icon="mdi-email-outline"
               :rules="[rules.required_id, rules.emailRules,]"
               label="아아디(이메일)"
-              v-model="form.email"
+              v-model="form.id"
             ></v-text-field> 
             
             <v-text-field
@@ -35,7 +35,7 @@
               :rules="[rules.required_pw, rules.min_pw]"
               :type="show_pw ? 'text' : 'password'"
               label="비밀번호"
-              v-model="form.pw"
+              v-model="form.password"
               @click:append="show_pw = !show_pw"
               @keypress.enter="login"
             ></v-text-field> 
@@ -80,8 +80,8 @@ export default {
   name: 'Login',
   data: () => ({
     form: {
-      email: '',
-      pw: '',
+      id: '',
+      password: '',
     },
     show_pw: false,
     rules: {
@@ -93,7 +93,7 @@ export default {
   }),
   computed: {
     enable () {
-      if (this.rules.emailRules(this.form.email) == true && this.rules.min_pw(this.form.pw) == true) {
+      if (this.rules.emailRules(this.form.id) == true && this.rules.min_pw(this.form.password) == true) {
         return true
       } else {
         return false
@@ -102,23 +102,17 @@ export default {
   },
   methods: {
     login: function () {
-      axios.post('', {
-        username: this.form.email,
-        password: this.form.pw
+      axios.post('http://127.0.0.1:8000/mimi/member/sign-in', {
+        id: this.form.id,
+        password: this.form.password
       })
         .then(res => {
-          localStorage.setItem('mimi-authorization', res.headers['mimi-authorization']);
+          console.log(res)
+          localStorage.setItem('mimi-authorization', res.data.token);
           const token = localStorage.getItem('mimi-authorization')
-          axios.post('', this.form, {
-            headers: {
-              'mimi-authorization': token,
-            }
-          })
-            .then(response => {
-              this.$store.dispatch("LOGIN", response.data.data)
-              // 성공적으로 로그인 되었을 때 메인페이지로 이동
-              this.$router.push({ name: 'Main' })
-            })
+          console.log(token)
+          this.$store.dispatch("LOGIN", token)
+          this.$router.push({ name: 'Main' })
         })
         .catch(err => {
           console.log(err)
