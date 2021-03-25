@@ -244,17 +244,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< Updated upstream
-  .v-text-field__slot {
-    margin: 10px;
-  }
-
-  .v-messages__message {
-    margin-top: 2px;
-  }
-  
-  .mdi-calendar {
-=======
 .v-text-field__slot {
     margin: 10px;
   }
@@ -264,7 +253,6 @@ export default {
   }
   
 .mdi-calendar {
->>>>>>> Stashed changes
     margin-top: 20px;
   }
 </style>
