@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "api",
     "member",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -65,12 +66,44 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
 ]
 
 if DEBUG:
     MIDDLEWARE.append("backend.debug.DisableCSRF")
 
 ROOT_URLCONF = "backend.urls"
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://j4d108.p.ssafy.io", 
+    "http://j4d108.p.ssafy.io",
+    "http://localhost:8000",
+    "http://localhost:8080",
+]
+
+CORS_ALLOW_METHODS  =  [ 
+    'DELETE' , 
+    'GET' , 
+    'OPTIONS' , 
+    'PATCH' , 
+    'POST' , 
+    'PUT' , 
+]
+
+CORS_ALLOW_HEADERS  =  [ 
+    'accept' , 
+    'accept-encoding' , 
+    'authorization' , 
+    'content-type' , 
+    'dnt' , 
+    'origin' , 
+    'user-agent' , 
+    'x-csrftoken' , 
+    'x-requested-with' , 
+]
 
 TEMPLATES = [
     {
