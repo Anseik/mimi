@@ -92,7 +92,8 @@ export default {
   methods: {
     findId() {
       console.log('가입여부 확인하기')
-      axios.get(`http://127.0.0.1:8000/mimi/member/find-id/${this.form.id},${this.form.birthday}`)
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      axios.get(`${serverUrl}/member/find-id/${this.form.id},${this.form.birthday}`)
         .then(res => {
           console.log(res)
           alert('가입된 유저입니다.')
