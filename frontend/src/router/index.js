@@ -50,6 +50,11 @@ const routes = [
         name: 'CourseCheck',
         component: () => import('../views/courses/CourseCheck.vue')
       },
+      {
+        path: '/restaurantdetail',
+        name: 'RestaurantDetail',
+        component: () => import('../views/restaurants/RestaurantDetail.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
