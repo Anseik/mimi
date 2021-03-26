@@ -18,23 +18,18 @@
         >
 
 
-          <!-- <v-list-item-image>
+          <v-list-item-image style="width: 100px">
             <v-img :src="item.image"></v-img>
-          </v-list-item-image> -->
-
-          <!--발표용-->
-          <div>
-          <v-list-item-image>
-            <v-img src="@/assets/busan.jpg" style="width:100px"></v-img>
           </v-list-item-image>
-          </div>
-          <!--발표용-->
+
             <v-list-item-content style="margin-left:5px; text-align: left;">
               <v-list-item-title v-html="item.title"></v-list-item-title>
               <v-list-item-address v-html="item.address"></v-list-item-address>
               <v-list-item-opentime v-html="item.opentime"></v-list-item-opentime>
             </v-list-item-content>
           
+          <!-- 버튼&모달 start -->
+
           <v-dialog v-model="dialog" persistent max-width="290">
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -52,10 +47,26 @@
               </v-btn>
             </template>
             <v-card>
-              <v-card-title class="headline">경로를 저장하시겠습니까?</v-card-title>
+              <v-card-title class="headline">관광지 번호에 저장하세요!</v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-container fluid>
+                  <v-checkbox
+                    label="1번 관광지"
+                    color="indigo darken-3"
+                  ></v-checkbox>
+                  <v-checkbox
+                    label="2번 관광지"
+                    color="indigo darken-3"
+                  ></v-checkbox>
+                  <v-checkbox
+                    label="3번 관광지"
+                    color="indigo darken-3"
+                  ></v-checkbox>
+                  <v-checkbox
+                    label="4번 관광지"
+                    color="indigo darken-3"
+                  ></v-checkbox>
                   <v-btn color="green darken-1" text @click="dialog = false">저장</v-btn>
                   <v-btn color="green darken-1" text @click="dialog = false">닫기</v-btn>
                 </v-container>
@@ -64,6 +75,7 @@
             </v-card>
           </v-dialog>
 
+          <!-- 버튼&모달 end -->
           
         </v-list-item>
       </template>
@@ -79,14 +91,14 @@ export default {
         dialog: false,
         items: [
           {
-            image: '@/assets/busan.jpg',
+            image: 'https://picsum.photos/200',
             title: '관광지명',
             address: '주소',
             opentime: '시설정보',
           },
           { divider: true, inset: true },
           {
-            image: '@/assets/busan.jpg',
+            image: 'https://picsum.photos/200',
             title: '관광지명',
             address: '주소',
             opentime: '시설정보',
