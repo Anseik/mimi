@@ -91,23 +91,12 @@ export default {
       }
     },
     signup() {
-      axios.post(`http://127.0.0.1:8000/mimi/member/sign-up`, this.form)
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      axios.post(`${serverUrl}/member/sign-up`, this.form)
         .then(res => {
           console.log(res)
           alert('회원가입 성공')
           this.$router.push({name: 'Login'})
-          // axios.post(``, {
-          //   username: this.form.id,
-          //   password: this.form.password,
-          // }, {
-          //   headers: {
-          //     'mimi-authorization': "",
-          //   }
-          // })
-          //   .then(response => {
-          //     console.log(response)
-          //     this.$router.push( {name: 'Login'} )
-          //   })
         })
         .catch(err => {
           console.log(err)

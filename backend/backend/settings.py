@@ -59,6 +59,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -70,6 +72,14 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
 
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:8081",
+]
+
+# 모든 경로 접속 허용 --> 차후 보안성 강화를 위해 제한해야한다.
+CORS_ALLOW_ALL_ORIGINS = True
 
 if DEBUG:
     MIDDLEWARE.append("backend.debug.DisableCSRF")

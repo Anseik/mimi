@@ -108,7 +108,8 @@ export default {
     sendCertNum() {
       console.log('인증번호 발송')
       this.showCert = true
-      axios.get(`http://127.0.0.1:8000/mimi/member/find-auth-email/${this.form.id}`)
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      axios.get(`${serverUrl}/member/find-auth-email/${this.form.id}`)
         .then(res => {
           console.log(res.data.message)
           this.certAnswer = res.data.message
@@ -120,7 +121,8 @@ export default {
     },
     changePw() {
       console.log('비밀번호 재설정')
-      axios.put(`http://127.0.0.1:8000/mimi/member/update-pw/${this.form.id},${this.form.password}`)
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      axios.put(`${serverUrl}/member/update-pw/${this.form.id},${this.form.password}`)
         .then(res => {
           console.log(res)
           alert('비밀번호 재설정 완료')
