@@ -20,7 +20,7 @@
               outlined
               prepend-inner-icon="mdi-email-outline"
               :rules="[rules.required_id, rules.emailRules,]"
-              label="아아디(이메일)"
+              label="아이디(이메일)"
               v-model="form.id"
             ></v-text-field> 
             
@@ -102,7 +102,9 @@ export default {
   },
   methods: {
     login: function () {
-      axios.post('http://127.0.0.1:8000/mimi/member/sign-in', {
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      console.log(serverUrl)
+      axios.post(`${serverUrl}/member/sign-in`, {
         id: this.form.id,
         password: this.form.password
       })

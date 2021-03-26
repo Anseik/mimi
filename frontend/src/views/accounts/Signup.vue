@@ -190,7 +190,10 @@ export default {
       } else {
         console.log('인증번호 발송')
         this.showCert = true
-        axios.get(`http://127.0.0.1:8000/mimi/member/auth-email/${this.form.id}`)
+        const serverUrl = process.env.VUE_APP_SERVER_URL
+        console.log(serverUrl)
+
+        axios.get(`${serverUrl}/member/auth-email/${this.form.id}`)
           .then(res => {
             console.log(res.data.message)
             this.certAnswer = res.data.message
@@ -244,15 +247,15 @@ export default {
 </script>
 
 <style scoped>
-  .v-text-field__slot {
+.v-text-field__slot {
     margin: 10px;
   }
 
-  .v-messages__message {
+.v-messages__message {
     margin-top: 2px;
   }
   
-  .mdi-calendar {
+.mdi-calendar {
     margin-top: 20px;
   }
 </style>
