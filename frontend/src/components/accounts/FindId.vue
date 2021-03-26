@@ -13,7 +13,7 @@
             prepend-inner-icon="mdi-email-outline"
             :rules="[required_id, emailRules,]"
             label="아이디(이메일)"
-            v-model="form.email"
+            v-model="form.id"
           ></v-text-field>
 
           <!-- 생년월일 -->
@@ -21,14 +21,14 @@
             ref="menu"
             v-model="menu"
             :close-on-content-click="false"
-            :return-value.sync="form.date"
+            :return-value.sync="form.birthday"
             transition="scale-transition"
             offset-y
             min-width="auto"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
-                v-model="form.date"
+                v-model="form.birthday"
                 label="생년월일"
                 prepend-icon="mdi-calendar"
                 readonly
@@ -37,7 +37,7 @@
               ></v-text-field>
             </template>
             <v-date-picker
-              v-model="form.date"
+              v-model="form.birthday"
               no-title
               scrollable
             >
@@ -52,7 +52,7 @@
               <v-btn
                 text
                 color="primary"
-                @click="$refs.menu.save(form.date)"
+                @click="$refs.menu.save(form.birthday)"
               >
                 OK
               </v-btn>
@@ -76,6 +76,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'FindId',
   components: {
@@ -83,28 +84,38 @@ export default {
   },
   data: () => ({
     form : {
-      email: '',
-      date: '',
+      id: '',
+      birthday: '',
     },
     menu: false,
   }),
   methods: {
     findId() {
       console.log('가입여부 확인하기')
+      const serverUrl = process.env.VUE_APP_SERVER_URL
+      axios.get(`${serverUrl}/member/find-id/${this.form.id},${this.form.birthday}`)
+        .then(res => {
+          console.log(res)
+          alert('가입된 유저입니다.')
+        })
+        .catch(err =>{
+          console.log(err)
+          alert('가입된 정보가 없습니다.')
+        })
     }
   },
   computed: {
     required_id() {
-      return () => !!this.form.email || '아이디(이메일)를 입력해주세요.'
+      return () => !!this.form.id || '아이디(이메일)를 입력해주세요.'
     },
     emailRules() {
-      return () => /.+@.+\..+/.test(this.form.email) || '아이디(이메일)는 이메일 형식으로 입력해주세요.'
+      return () => /.+@.+\..+/.test(this.form.id) || '아이디(이메일)는 이메일 형식으로 입력해주세요.'
     },
     dateRules() {
       return console.log('test')
     },
     enable() {
-      if (this.emailRules() == true && !!this.form.date == true) {
+      if (this.emailRules() == true && !!this.form.birthday == true) {
         return true
       } else {
         return false

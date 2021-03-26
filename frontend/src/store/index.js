@@ -1,25 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import jwt_decode from "jwt-decode";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     login: false,
-    userId: null,
-    email: '',
+    user: null,
   },
   mutations: {
     logout(state) {
       state.login = false;
-      state.userId = null;
-      state.email = null;
+      state.user = null;
     },
-    login(state, data) {
+    login(state, token) {
+      let decode = jwt_decode(token);
+      // console.log(decode)
       state.login = true;
-      state.userId = data.id
-      state.email = data.email;
+      // console.log(state.login)
+      state.user = decode.user
+      // console.log(state.user)
     },
   },
   actions: {
@@ -27,8 +29,8 @@ export default new Vuex.Store({
       commit("logout");
       localStorage.removeItem("mimi-authorization")
     },
-    LOGIN({ commit }, data) {
-      commit("login", data);
+    LOGIN({ commit }, token) {
+      commit("login", token);
     },
   },
   modules: {

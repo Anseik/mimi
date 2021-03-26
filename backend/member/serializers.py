@@ -19,3 +19,11 @@ class ChangeMemberPasswordSerializer(serializers.Serializer):
         member = Member.objects.all()
         model = Member
         fields = ("id", "password")
+
+class SearchMemberIdSerializer(serializers.Serializer):
+    id = serializers.EmailField(help_text="변경할 이메일")
+    birthday = serializers.DateField(help_text="생년월일")
+    class Meta:
+        member = Member.objects.all()
+        model = Member
+        fields = ("id", "birthday")

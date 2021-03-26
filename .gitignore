@@ -266,7 +266,7 @@ GitHub.sublime-settings
 [Ll]ocal
 [Ss]cripts
 pyvenv.cfg
-.env
+# .env
 .venv
 env/
 venv/

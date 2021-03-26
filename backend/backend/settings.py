@@ -55,9 +55,12 @@ INSTALLED_APPS = [
     "drf_yasg",
     "api",
     "member",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -65,12 +68,53 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:8081",
+]
+
+# 모든 경로 접속 허용 --> 차후 보안성 강화를 위해 제한해야한다.
+CORS_ALLOW_ALL_ORIGINS = True
 
 if DEBUG:
     MIDDLEWARE.append("backend.debug.DisableCSRF")
 
 ROOT_URLCONF = "backend.urls"
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://j4d108.p.ssafy.io", 
+    "http://j4d108.p.ssafy.io",
+    "http://localhost:8000",
+    "http://localhost:8080",
+    "http://192.168.0.4:8080"
+]
+
+CORS_ALLOW_METHODS  =  [ 
+    'DELETE' , 
+    'GET' , 
+    'OPTIONS' , 
+    'PATCH' , 
+    'POST' , 
+    'PUT' , 
+]
+
+CORS_ALLOW_HEADERS  =  [ 
+    'accept' , 
+    'accept-encoding' , 
+    'authorization' , 
+    'content-type' , 
+    'dnt' , 
+    'origin' , 
+    'user-agent' , 
+    'x-csrftoken' , 
+    'x-requested-with' , 
+]
 
 TEMPLATES = [
     {
