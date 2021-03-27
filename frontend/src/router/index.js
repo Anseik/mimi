@@ -60,6 +60,11 @@ const routes = [
         name: 'Timeline',
         component: () => import('../views/timelines/Timeline.vue')
       },
+      {
+        path: '/traveldetail',
+        name: 'TravelDetail',
+        component: () => import('../views/travels/TravelDetail.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
