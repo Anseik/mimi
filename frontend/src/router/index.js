@@ -55,6 +55,11 @@ const routes = [
         name: 'RestaurantDetail',
         component: () => import('../views/restaurants/RestaurantDetail.vue')
       },
+      {
+        path: '/traveldetail',
+        name: 'TravelDetail',
+        component: () => import('../views/travels/TravelDetail.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
