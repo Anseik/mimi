@@ -1,4 +1,4 @@
-from .models import Member, Store, Review, Menu, Landmark, ZzimStores, ZzimStoreCourse, ZzimLandCourse
+from .models import Member, Store, Review, Menu, Landmark, ZzimStore, ZzimStoreCourse, ZzimLandCourse
 from rest_framework import serializers
 
 class StoreSerializer(serializers.ModelSerializer):

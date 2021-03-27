@@ -1,5 +1,10 @@
+
 from django.db import models
-from ../member/models import member
+from member.models import Member
+
+
+
+
 # Create your models here.
 #r v s
 
@@ -76,11 +81,11 @@ class ZzimStore(models.Model):
 class ZzimStoreCourse(models.Model):
     
     num = models.ForeignKey(Member, on_delete=models.CASCADE)  #사용자구분번호 ( members.num )
-    sidB = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)                        #아침코스(식당)  ( stores.sid )
+    sidB = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidB', null=True)                        #아침코스(식당)  ( stores.sid )
     isSavedB = models.CharField(max_length=100, null=True)                     #아침저장여부                 
-    sidL = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)                       #점심코스(식당)  ( stores.sid )
+    sidL = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidL', null=True)                       #점심코스(식당)  ( stores.sid )
     isSavedL = models.CharField(max_length=100, null=True)                     #점심저장여부                 
-    sidD = models.ForeignKey(Store, on_delete=models.CASCADE, null=True)                        #저녁코스(식당)  ( stores.sid )
+    sidD = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidD', null=True)                        #저녁코스(식당)  ( stores.sid )
     isSavedD = models.CharField(max_length=100, null=True)                     #저녁저장여부                 
 
     class Meta:
@@ -90,10 +95,10 @@ class ZzimStoreCourse(models.Model):
 class ZzimLandCourse(models.Model):
     
     num = models.ForeignKey(Member, on_delete=models.CASCADE)  #사용자구분번호 ( members.num )
-    lid1 = models.ForeignKey(Landmark, on_delete=models.CASCADE, null=True)                #1코스
-    lid2 = models.ForeignKey(Landmark, on_delete=models.CASCADE, null=True)                #2코스
-    lid3 = models.ForeignKey(Landmark, on_delete=models.CASCADE, null=True)                #3코스
-    lid4 = models.ForeignKey(Landmark, on_delete=models.CASCADE, null=True)                #4코스
+    lid1 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid1', null=True)                #1코스
+    lid2 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid2', null=True)                #2코스
+    lid3 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid3', null=True)                #3코스
+    lid4 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid4', null=True)                #4코스
     isSaved = models.CharField(max_length=100, null=True)                     #코스저장여부
     savedDate = models.CharField(max_length=200, null=True)                   #코스 저장일자                   
 
