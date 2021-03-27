@@ -55,6 +55,11 @@ const routes = [
         name: 'RestaurantDetail',
         component: () => import('../views/restaurants/RestaurantDetail.vue')
       },
+      {
+        path: '/timeline',
+        name: 'Timeline',
+        component: () => import('../views/timelines/Timeline.vue')
+      },
       // {
       //   path: '',
       //   name: 'Main',
