@@ -7,6 +7,9 @@ DATABASES = {
         'PASSWORD': 'mimissafy',
         'HOST': 'j4d108.p.ssafy.io',
         'PORT': '3306',
+        'OPTIONS' : {                            
+            'charset' : 'utf8mb4'
+        }
     }
 }
 
