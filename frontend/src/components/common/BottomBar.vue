@@ -10,7 +10,7 @@
       <i class="fas fa-suitcase-rolling fa-3x" style="color:#3949AB"></i>
     </v-btn>
 
-    <v-btn plain style="margin-left: 3px; margin-right: 3px">
+    <v-btn plain @click="moveToTimeline" style="margin-left: 3px; margin-right: 3px">
       <span>타임라인</span>
       <i class="fas fa-camera-retro fa-3x" style="color:#3949AB"></i>
     </v-btn>
@@ -33,21 +33,17 @@ export default {
   }),
   methods: {
     moveToDiary() {
-      console.log('다이어리로 이동')
       this.$router.push({name : "Diary"})
     },
     moveToMain() {
-      console.log('메인으로 이동')
       this.$router.push({name : "Main"})
     },
     moveToCourse() {
-      console.log('여행코스로 이동')
       this.$router.push({name : "SelectOption"})
     },
-    // moveToTimeline() {
-    //   console.log('타임라인으로 이동')
-    //   this.$router.push({name : ""})
-    // },
+    moveToTimeline() {
+      this.$router.push({name : "Timeline"})
+    },
   },
 }
 </script>
