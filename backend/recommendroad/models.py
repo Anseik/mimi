@@ -5,7 +5,7 @@ from member.models import Member
 
 
 
-# Create your models here.
+#Create your models here.
 #r v s
 
 #store 
@@ -29,9 +29,9 @@ class Store(models.Model):
 #menu`  6asd
 class Menu(models.Model):
     
-    mid = models.BigIntegerField(primary_key=True)
-    sid = models.BigIntegerField(max_length=30)
-    menu_name = models.CharField(max_length=100, null=True)
+    mid = models.CharField(max_length=30, primary_key=True)
+    sid = models.CharField(max_length=39, null=True)    
+    menu_name = models.CharField(max_length=200, null=True)
     price = models.CharField(max_length=100, null=True)
     
     class Meta:
@@ -40,10 +40,10 @@ class Menu(models.Model):
 #review 
 class Review(models.Model):
     
-    rid = models.CharField(max_length=30, primary_key=True)
-    sid = models.ForeignKey(Store, on_delete=models.CASCADE, db_column="sid")
-    num = models.ForeignKey(Member, on_delete=models.CASCADE, db_column="num")
-    total_score = models.CharField(max_length=100, null=True)
+    rid = models.CharField(max_length=30, null=True)
+    sid = models.CharField(max_length=30, null=True)
+    num = models.CharField(max_length=30, null=True)
+    total_score = models.CharField(max_length=30, null=True)
     content = models.TextField()
     reg_time = models.TextField()
 
@@ -71,8 +71,9 @@ class Landmark(models.Model):
 #맛집코스
 class ZzimStore(models.Model):
     
-    num = models.ForeignKey(Member, on_delete=models.CASCADE, db_column="num")  #사용자구분번호 ( members.num )
-    sid = models.ForeignKey(Store, on_delete=models.CASCADE, db_column="sid")                        #아침코스(식당)  ( stores.sid )           
+    id = models.IntegerField(primary_key=True)
+    num = models.CharField(max_length=30, null=True)  #사용자구분번호 ( members.num )
+    sid = models.CharField(max_length=30, null=True)                       #아침코스(식당)  ( stores.sid )           
 
     class Meta:
         db_table = "zzimStores"
@@ -80,27 +81,30 @@ class ZzimStore(models.Model):
 #맛집코스
 class ZzimStoreCourse(models.Model):
     
-    num = models.ForeignKey(Member, on_delete=models.CASCADE, db_column="num")  #사용자구분번호 ( members.num )
-    sidB = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidB', null=True, db_column="sidB")                        #아침코스(식당)  ( stores.sid )
-    isSavedB = models.CharField(max_length=100, null=True)                     #아침저장여부                 
-    sidL = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidL', null=True, db_column="sidL")                       #점심코스(식당)  ( stores.sid )
-    isSavedL = models.CharField(max_length=100, null=True)                     #점심저장여부                 
-    sidD = models.ForeignKey(Store, on_delete=models.CASCADE,related_name='sidD', null=True, db_column="sidD")                        #저녁코스(식당)  ( stores.sid )
-    isSavedD = models.CharField(max_length=100, null=True)                     #저녁저장여부                 
+    id = models.IntegerField(primary_key=True)
+    num = models.CharField(max_length=30, null=True)  #사용자구분번호 ( members.num )
+    sidB = models.CharField(max_length=30, null=True)                       #아침코스(식당)  ( stores.sid )
+    isSavedB = models.CharField(max_length=30, null=True)                     #아침저장여부                 
+    sidL = models.CharField(max_length=30, null=True)                       #점심코스(식당)  ( stores.sid )
+    isSavedL = models.CharField(max_length=30, null=True)                    #점심저장여부                 
+    sidD = models.CharField(max_length=30, null=True)                        #저녁코스(식당)  ( stores.sid )
+    isSavedD = models.CharField(max_length=30, null=True)                     #저녁저장여부  
+    savedDate = models.CharField(max_length=100, null=True)                   #코스 저장일자                  
 
     class Meta:
         db_table = "zzimStoreCourses"
 
 #관광지코스
 class ZzimLandCourse(models.Model):
-    
-    num = models.ForeignKey(Member, on_delete=models.CASCADE, db_column="num")  #사용자구분번호 ( members.num )
-    lid1 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid1', null=True, db_column="lid1")                #1코스
-    lid2 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid2', null=True, db_column="lid2")                #2코스
-    lid3 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid3', null=True, db_column="lid3")                #3코스
-    lid4 = models.ForeignKey(Landmark, on_delete=models.CASCADE,related_name='lid4', null=True, db_column="lid4")                #4코스
-    isSaved = models.CharField(max_length=100, null=True)                     #코스저장여부
-    savedDate = models.CharField(max_length=200, null=True)                   #코스 저장일자                   
+
+    id = models.IntegerField(primary_key=True)
+    num = models.CharField(max_length=30, null=True)   #사용자구분번호 ( members.num )
+    lid1 = models.CharField(max_length=30, null=True)                 #1코스
+    lid2 = models.CharField(max_length=30, null=True)                 #2코스
+    lid3 = models.CharField(max_length=30, null=True)                 #3코스
+    lid4 = models.CharField(max_length=30, null=True)                 #4코스
+    isSaved = models.CharField(max_length=30, null=True)                      #코스저장여부
+    savedDate = models.CharField(max_length=100, null=True)                   #코스 저장일자                   
 
     class Meta:
         db_table = "zzimLandCourses"
