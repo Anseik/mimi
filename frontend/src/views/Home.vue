@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="container">
     <TopBar />
     <v-main>
       <router-view />

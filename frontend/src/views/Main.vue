@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="backgroundimg" id="container">
     <img src="@/assets/mimi_logo.png" alt="" width="250px" style="margin-left: 80px; margin-top: 100px" @click="restaurant">
     <v-text-field
         label="맛집검색"
@@ -30,5 +30,9 @@ export default {
 </script>
 
 <style>
+.backgroundimg {
+  background-image: url(https://i.ibb.co/THdNbcb/backback.jpg);
+  min-height: 650px;
+}
 
 </style>
