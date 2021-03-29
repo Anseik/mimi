@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="backimg" id="container">
       <v-timeline
         align-top
         dense
@@ -87,6 +87,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.backimg {
+  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
+  min-height: 650px;
+}
 </style>

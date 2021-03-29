@@ -1,228 +1,230 @@
 <template>
-  <v-row class="fill-height">
-    <v-col>
-      <v-sheet height="">
-        <v-toolbar
-          flat
-        >
-          <v-btn
-            outlined
-            class="mr-4"
-            color="grey darken-2"
-            @click="setToday"
-          >
-            Today
-          </v-btn>
-          <v-btn
-            fab
-            text
-            small
-            color="grey darken-2"
-            @click="prev"
-          >
-            <v-icon small>
-              mdi-chevron-left
-            </v-icon>
-          </v-btn>
-          <v-btn
-            fab
-            text
-            small
-            color="grey darken-2"
-            @click="next"
-          >
-            <v-icon small>
-              mdi-chevron-right
-            </v-icon>
-          </v-btn>
-          <v-toolbar-title v-if="$refs.calendar">
-            {{ $refs.calendar.title }}
-          </v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-      </v-sheet>
-      <v-sheet height="600">
-        <v-calendar
-          ref="calendar"
-          v-model="focus"
-          color="primary"
-          :events="events"
-          :event-color="getEventColor"
-          :type="type"
-          @click:event="showEvent"
-        ></v-calendar>
-        <v-menu
-          v-model="selectedOpen"
-          :close-on-content-click="false"
-          :activator="selectedElement"
-          offset-x
-        >
-          <v-card
-            color="grey lighten-4"
-            
+  <div class="backimg" id="container">
+    <v-row class="fill-height">
+      <v-col>
+        <v-sheet height="">
+          <v-toolbar
             flat
           >
-            <v-toolbar
-              :color="selectedEvent.color"
-              dark
+            <v-btn
+              outlined
+              class="mr-4"
+              color="grey darken-2"
+              @click="setToday"
             >
-              <v-toolbar-title v-html="selectedEvent.storeName" @click="moveStoreDetail"></v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn icon v-if="selectedEvent.visit==false" @click="selectedEvent.visit=true">
-                <v-icon>mdi-map-marker-check-outline</v-icon>
-              </v-btn>
-              <v-btn icon v-if="selectedEvent.visit==true" @click="selectedEvent.visit=false">
-                <v-icon>mdi-map-marker-check</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-card-text>
-              <span v-html="selectedEvent.details"></span>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn
-                text
-                color="secondary"
-                @click="selectedOpen = false"
+              Today
+            </v-btn>
+            <v-btn
+              fab
+              text
+              small
+              color="grey darken-2"
+              @click="prev"
+            >
+              <v-icon small>
+                mdi-chevron-left
+              </v-icon>
+            </v-btn>
+            <v-btn
+              fab
+              text
+              small
+              color="grey darken-2"
+              @click="next"
+            >
+              <v-icon small>
+                mdi-chevron-right
+              </v-icon>
+            </v-btn>
+            <v-toolbar-title v-if="$refs.calendar">
+              {{ $refs.calendar.title }}
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+          </v-toolbar>
+        </v-sheet>
+        <v-sheet height="600">
+          <v-calendar
+            ref="calendar"
+            v-model="focus"
+            color="primary"
+            :events="events"
+            :event-color="getEventColor"
+            :type="type"
+            @click:event="showEvent"
+          ></v-calendar>
+          <v-menu
+            v-model="selectedOpen"
+            :close-on-content-click="false"
+            :activator="selectedElement"
+            offset-x
+          >
+            <v-card
+              color="grey lighten-4"
+              
+              flat
+            >
+              <v-toolbar
+                :color="selectedEvent.color"
+                dark
               >
-                Cancel
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-menu>
-      </v-sheet>
-      <div>
-        <h4 class="ml-3 mt-3">{{ this.focus }} 일정</h4>
-        <v-row class="mt-1 mx-1">
-          <v-col cols=4 class="">
-            <p class="text-center">아침</p>
-            <v-card
-              class=""
-              max-height=""
-            >
-              <template slot="progress">
-                <v-progress-linear
-                  color="deep-purple"
-                  height="10"
-                  indeterminate
-                ></v-progress-linear>
-              </template>
-
-              <v-img
-                height=""
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-              ></v-img>
-
-              <v-card-title class="pa-0">식당명</v-card-title>
-
-              <v-card-text class="pa-3">
-                <v-row
-                  align=""
-                  class=""
-                >
-                  <v-rating
-                    :value="4.5"
-                    color="amber"
-                    dense
-                    half-increments
-                    readonly
-                    size="14"
-                  ></v-rating>
-
-                  <div class="grey--text">
-                    4.5 (413)
-                  </div>
-                </v-row>
+                <v-toolbar-title v-html="selectedEvent.storeName" @click="moveStoreDetail"></v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn icon v-if="selectedEvent.visit==false" @click="selectedEvent.visit=true">
+                  <v-icon>mdi-map-marker-check-outline</v-icon>
+                </v-btn>
+                <v-btn icon v-if="selectedEvent.visit==true" @click="selectedEvent.visit=false">
+                  <v-icon>mdi-map-marker-check</v-icon>
+                </v-btn>
+              </v-toolbar>
+              <v-card-text>
+                <span v-html="selectedEvent.details"></span>
               </v-card-text>
-            </v-card>     
-          </v-col>
-          <v-col cols=4 class="">
-            <p class="text-center">점심</p>
-            <v-card
-              class=""
-              max-height=""
-            >
-              <template slot="progress">
-                <v-progress-linear
-                  color="deep-purple"
-                  height="10"
-                  indeterminate
-                ></v-progress-linear>
-              </template>
-
-              <v-img
-                height=""
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-              ></v-img>
-
-              <v-card-title class="pa-0">식당명</v-card-title>
-
-              <v-card-text class="pa-3">
-                <v-row
-                  align=""
-                  class=""
+              <v-card-actions>
+                <v-btn
+                  text
+                  color="secondary"
+                  @click="selectedOpen = false"
                 >
-                  <v-rating
-                    :value="4.5"
-                    color="amber"
-                    dense
-                    half-increments
-                    readonly
-                    size="14"
-                  ></v-rating>
+                  Cancel
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-menu>
+        </v-sheet>
+        <div>
+          <h4 class="ml-3 mt-3">{{ this.focus }} 일정</h4>
+          <v-row class="mt-1 mx-1">
+            <v-col cols=4 class="">
+              <p class="text-center">아침</p>
+              <v-card
+                class=""
+                max-height=""
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                    color="deep-purple"
+                    height="10"
+                    indeterminate
+                  ></v-progress-linear>
+                </template>
 
-                  <div class="grey--text">
-                    4.5 (413)
-                  </div>
-                </v-row>
-              </v-card-text>
-            </v-card>           
-          </v-col>
-          <v-col cols=4 class="">
-            <p class="text-center">저녁</p>
-            <v-card
-              class=""
-              max-height=""
-            >
-              <template slot="progress">
-                <v-progress-linear
-                  color="deep-purple"
-                  height="10"
-                  indeterminate
-                ></v-progress-linear>
-              </template>
+                <v-img
+                  height=""
+                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
 
-              <v-img
-                height=""
-                src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
-              ></v-img>
+                <v-card-title class="pa-0">식당명</v-card-title>
 
-              <v-card-title class="pa-0">식당명</v-card-title>
+                <v-card-text class="pa-3">
+                  <v-row
+                    align=""
+                    class=""
+                  >
+                    <v-rating
+                      :value="4.5"
+                      color="amber"
+                      dense
+                      half-increments
+                      readonly
+                      size="14"
+                    ></v-rating>
 
-              <v-card-text class="pa-3">
-                <v-row
-                  align=""
-                  class=""
-                >
-                  <v-rating
-                    :value="4.5"
-                    color="amber"
-                    dense
-                    half-increments
-                    readonly
-                    size="14"
-                  ></v-rating>
+                    <div class="grey--text">
+                      4.5 (413)
+                    </div>
+                  </v-row>
+                </v-card-text>
+              </v-card>     
+            </v-col>
+            <v-col cols=4 class="">
+              <p class="text-center">점심</p>
+              <v-card
+                class=""
+                max-height=""
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                    color="deep-purple"
+                    height="10"
+                    indeterminate
+                  ></v-progress-linear>
+                </template>
 
-                  <div class="grey--text">
-                    4.5 (413)
-                  </div>
-                </v-row>
-              </v-card-text>
-            </v-card>             
-          </v-col>
-        </v-row>
-      </div>
-    </v-col>
-  </v-row>
+                <v-img
+                  height=""
+                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+
+                <v-card-title class="pa-0">식당명</v-card-title>
+
+                <v-card-text class="pa-3">
+                  <v-row
+                    align=""
+                    class=""
+                  >
+                    <v-rating
+                      :value="4.5"
+                      color="amber"
+                      dense
+                      half-increments
+                      readonly
+                      size="14"
+                    ></v-rating>
+
+                    <div class="grey--text">
+                      4.5 (413)
+                    </div>
+                  </v-row>
+                </v-card-text>
+              </v-card>           
+            </v-col>
+            <v-col cols=4 class="">
+              <p class="text-center">저녁</p>
+              <v-card
+                class=""
+                max-height=""
+              >
+                <template slot="progress">
+                  <v-progress-linear
+                    color="deep-purple"
+                    height="10"
+                    indeterminate
+                  ></v-progress-linear>
+                </template>
+
+                <v-img
+                  height=""
+                  src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+                ></v-img>
+
+                <v-card-title class="pa-0">식당명</v-card-title>
+
+                <v-card-text class="pa-3">
+                  <v-row
+                    align=""
+                    class=""
+                  >
+                    <v-rating
+                      :value="4.5"
+                      color="amber"
+                      dense
+                      half-increments
+                      readonly
+                      size="14"
+                    ></v-rating>
+
+                    <div class="grey--text">
+                      4.5 (413)
+                    </div>
+                  </v-row>
+                </v-card-text>
+              </v-card>             
+            </v-col>
+          </v-row>
+        </div>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
@@ -356,6 +358,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.backimg {
+  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
+  min-height: 650px;
+}
 </style>

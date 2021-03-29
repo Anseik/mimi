@@ -19,3 +19,8 @@ export default {
   }),
 };
 </script>
+<style>
+#container {
+     font-family: "Do Hyeon", sans-serif;
+}
+</style>

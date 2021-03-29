@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="backimg" id="container">
     <h3>여행 코스 추천</h3>
     <v-col align="end">
       <v-btn
@@ -40,5 +40,9 @@ export default {
 .ts {
     color: #356859;
     font-weight: 900;
+}
+.backimg {
+  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
+  min-height: 650px;
 }
 </style>

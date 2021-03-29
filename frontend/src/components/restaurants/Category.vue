@@ -3,7 +3,7 @@
     <v-card>
       <v-tabs
         dark
-        background-color= "rgb(255, 218, 115)"
+        background-color= "#EDE7F6"
         show-arrows
       >
         <v-tab class="categoty-imfo" @click="clickCategory('근처')"><span class="category-color">주변맛집</span>
@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .category-color {
   font-weight: 700;
-  color: rgb(50, 121, 67);
+  color: #6A1B9A;
   font-size: 125%;
 }
 .categoty-imfo {
