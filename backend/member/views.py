@@ -84,7 +84,7 @@ class MemberView(viewsets.GenericViewSet, View):
             #전처리 한번 필요
             
             curr_max_num = Member.objects.all().count() + 949437
-            
+            print(curr_max_num)
             Member.objects.create(
                 num = curr_max_num,
                 id = data["id"],
