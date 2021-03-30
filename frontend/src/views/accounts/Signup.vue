@@ -190,7 +190,7 @@ export default {
       } else {
         console.log('인증번호 발송')
         this.showCert = true
-        const serverUrl = process.env.VUE_APP_LOCAL_URL
+        const serverUrl = process.env.VUE_APP_SERVER_URL
         console.log(serverUrl)
 
         axios.get(`${serverUrl}/member/auth-email/${this.form.id}`)

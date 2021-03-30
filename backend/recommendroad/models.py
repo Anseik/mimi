@@ -108,3 +108,11 @@ class ZzimLandCourse(models.Model):
 
     class Meta:
         db_table = "zzimLandCourses"
+
+class RScoreTable(models.Model):
+  t1 = models.CharField(max_length=50, null=True)
+  t2 = models.CharField(max_length=50, null=True)
+  score = models.DecimalField(decimal_places=3,max_digits=4)
+  
+  class Meta:
+        db_table = "rScoreTables"
