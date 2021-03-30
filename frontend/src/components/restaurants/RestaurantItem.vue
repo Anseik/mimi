@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container fluid class="backcolor" >
+    <v-container fluid class="backcolor" @click="RestaurantDetail">
       <v-simple-table dense>
         <template v-slot:default>
           <tbody>
