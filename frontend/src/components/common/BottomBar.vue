@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation style="height: 62px" fixed>
+  <v-bottom-navigation style="height: 62px;" app>
     <v-btn plain @click="moveToMain" style="margin-right: 3px;" color="#356859">
       <span>홈</span>
       <i class="fas fa-home fa-3x" style="color:#3949AB"></i>

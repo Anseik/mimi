@@ -1,7 +1,8 @@
 <template>
-  <div class="backimg" id="container">
-    <v-row class="fill-height">
-      <v-col>
+  <div class="" id="container">
+    <v-row class="ma-0" style="width: 100%">
+      <v-col class="pa-0">
+        <!-- 캘린더 조작 바 -->
         <v-sheet height="">
           <v-toolbar
             flat
@@ -42,6 +43,7 @@
             <v-spacer></v-spacer>
           </v-toolbar>
         </v-sheet>
+        <!-- 캘린더 -->
         <v-sheet height="600">
           <v-calendar
             ref="calendar"
@@ -91,9 +93,12 @@
             </v-card>
           </v-menu>
         </v-sheet>
-        <div>
+        <!-- 해당일자 일정 조회 -->
+        <div style="">
           <h4 class="ml-3 mt-3">{{ this.focus }} 일정</h4>
           <v-row class="mt-1 mx-1">
+            <v-col cols="12"><h5>방문예정 맛집</h5></v-col>
+            <!-- 아침 -->
             <v-col cols=4 class="">
               <p class="text-center">아침</p>
               <v-card
@@ -113,15 +118,16 @@
                   src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
 
-                <v-card-title class="pa-0">식당명</v-card-title>
+                <v-card-title class="pa-0 pl-1">식당명</v-card-title>
 
                 <v-card-text class="pa-3">
                   <v-row
-                    align=""
+                    
                     class=""
                   >
                     <v-rating
                       :value="4.5"
+                      class=""
                       color="amber"
                       dense
                       half-increments
@@ -129,13 +135,72 @@
                       size="14"
                     ></v-rating>
 
-                    <div class="grey--text">
+                    <div class="grey--text pl-1">
                       4.5 (413)
                     </div>
                   </v-row>
                 </v-card-text>
-              </v-card>     
+              </v-card>
+              <!-- 방문체크 및 리뷰 작성 -->
+              <div class="text-center">
+                <v-dialog
+                  v-model="dialog"
+                  persistent
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      class=""
+                      icon
+                      large
+                      v-on="on"
+                      v-bind="attrs"
+                      @click="visitCheck"
+                    >
+                      <v-icon>mdi-map-marker-check-outline</v-icon>
+                      방문
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      <span class="headline">방문 리뷰작성</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols=12>
+                            <v-text-field
+                              label="리뷰"
+                              required
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols=12>
+                            <v-rating></v-rating>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Close
+                      </v-btn>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Save
+                      </v-btn>
+                    </v-card-actions>                  
+                  </v-card>              
+                </v-dialog>
+              </div>
             </v-col>
+            <!-- 점심 -->
             <v-col cols=4 class="">
               <p class="text-center">점심</p>
               <v-card
@@ -155,11 +220,10 @@
                   src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
 
-                <v-card-title class="pa-0">식당명</v-card-title>
+                <v-card-title class="pa-0 pl-1">식당명</v-card-title>
 
                 <v-card-text class="pa-3">
                   <v-row
-                    align=""
                     class=""
                   >
                     <v-rating
@@ -171,13 +235,72 @@
                       size="14"
                     ></v-rating>
 
-                    <div class="grey--text">
+                    <div class="grey--text pl-1">
                       4.5 (413)
                     </div>
                   </v-row>
                 </v-card-text>
-              </v-card>           
+              </v-card>
+              <!-- 방문체크 및 리뷰 작성 -->
+              <div class="text-center">
+                <v-dialog
+                  v-model="dialog"
+                  persistent
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      class=""
+                      icon
+                      large
+                      v-on="on"
+                      v-bind="attrs"
+                      @click="visitCheck"
+                    >
+                      <v-icon>mdi-map-marker-check-outline</v-icon>
+                      방문
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      <span class="headline">방문 리뷰작성</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols=12>
+                            <v-text-field
+                              label="리뷰"
+                              required
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols=12>
+                            <v-rating></v-rating>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Close
+                      </v-btn>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Save
+                      </v-btn>
+                    </v-card-actions>                  
+                  </v-card>              
+                </v-dialog>
+              </div>                       
             </v-col>
+            <!-- 저녁 -->
             <v-col cols=4 class="">
               <p class="text-center">저녁</p>
               <v-card
@@ -197,11 +320,10 @@
                   src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                 ></v-img>
 
-                <v-card-title class="pa-0">식당명</v-card-title>
+                <v-card-title class="pa-0 pl-1">식당명</v-card-title>
 
                 <v-card-text class="pa-3">
                   <v-row
-                    align=""
                     class=""
                   >
                     <v-rating
@@ -213,13 +335,73 @@
                       size="14"
                     ></v-rating>
 
-                    <div class="grey--text">
+                    <div class="grey--text pl-1">
                       4.5 (413)
                     </div>
                   </v-row>
                 </v-card-text>
-              </v-card>             
+              </v-card>
+              <!-- 방문체크 및 리뷰 작성 -->
+              <div class="text-center">
+                <v-dialog
+                  v-model="dialog"
+                  persistent
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      class=""
+                      icon
+                      large
+                      v-on="on"
+                      v-bind="attrs"
+                      @click="visitCheck"
+                    >
+                      <v-icon>mdi-map-marker-check-outline</v-icon>
+                      방문
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      <span class="headline">방문 리뷰작성</span>
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>
+                          <v-col cols=12>
+                            <v-text-field
+                              label="리뷰"
+                              required
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols=12>
+                            <v-rating></v-rating>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Close
+                      </v-btn>
+                      <v-btn
+                        color="blue darken-1"
+                        text
+                        @click="dialog = false"
+                      >
+                        Save
+                      </v-btn>
+                    </v-card-actions>                  
+                  </v-card>              
+                </v-dialog>
+              </div>                           
             </v-col>
+            <v-col cols="12"><h5>방문예정 여행코스</h5></v-col>
+            <v-col cols="12"><Course class="pt-3" /></v-col>
           </v-row>
         </div>
       </v-col>
@@ -229,10 +411,11 @@
 
 <script>
 import axios from 'axios'
+import Course from '@/components/courses/Course.vue'
 export default {
   name : "Diary",
   components: {
-    
+    Course,
   },
   data: () => ({
     focus: '',
@@ -240,6 +423,7 @@ export default {
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
+    dialog: false,
     events: [
       {
         name: '아침', 
@@ -347,7 +531,10 @@ export default {
     },
     moveStoreDetail() {
       console.log('가게 상세조회 화면으로 이동')
-    }
+    },
+    visitCheck() {
+      console.log('방문체크')
+    },
   },
   mounted () {
     this.$refs.calendar.checkChange()

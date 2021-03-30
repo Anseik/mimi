@@ -31,9 +31,9 @@ export default {
     ])
   },
   created() {
-    if (this.login == false) {
-      this.$router.push({name: 'Login'})
-    }
+    // if (this.login == false) {
+    //   this.$router.push({name: 'Login'})
+    // }
   }
 }
 </script>
