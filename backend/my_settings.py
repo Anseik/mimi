@@ -3,8 +3,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mimi',
-        'USER': 'test',
-        'PASSWORD': '1234',
+        'USER': 'mimi',
+        'PASSWORD': 'mimissafy',
         'HOST': 'j4d108.p.ssafy.io',
         'PORT': '3306',
         'OPTIONS' : {                            
