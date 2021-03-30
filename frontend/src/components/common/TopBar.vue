@@ -1,16 +1,16 @@
 <template>
   <div>
-    <v-toolbar class="nav" style="height: 50px" :elevation="0">
-      <v-toolbar-title
-        style="margin-top: -1%; margin-left: 35%;"
-      >
+    <v-app-bar 
+      flat 
+      fixed
+    >
+      <v-toolbar-title>
         <label>미미여지도</label>
       </v-toolbar-title>
-
       <v-spacer></v-spacer>
-
-      <v-btn icon @click="logout"><v-icon>mdi-account-arrow-right </v-icon></v-btn>
-    </v-toolbar>
+      <v-btn icon @click="logout"><v-icon>mdi-account-arrow-right</v-icon></v-btn>
+    </v-app-bar>
+    <div style="height: 60px;"></div>
   </div>
 </template>
 
@@ -39,6 +39,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>
