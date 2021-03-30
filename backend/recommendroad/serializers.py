@@ -103,7 +103,7 @@ class SaveOptionSerializer(serializers.Serializer):
     lid2 = serializers.CharField()
     lid3 = serializers.CharField()
     lid4 = serializers.CharField()
-    isSaved = serializers.CharField()
+    savedDate = serializers.CharField()
     sidB = serializers.CharField()
     sidL = serializers.CharField()
     sidD = serializers.CharField()

@@ -19,12 +19,18 @@ import jwt
 import requests
 import random
 class UserInfo(viewsets.GenericViewSet, View):
-    # 저장 정보 전달
+    # 저장 정보 전달(아침점심저녁 간단정보)
     def get_user_schedule(self, request, id=''):
         if Member.objects.filter(id = id).exists() :
             #예약 음식 가져오기
-            print("")
+            zzimlist = ZzimStoreCourse.objects.filter(id=id)
 
+
+        return JsonResponse({"message" : "err"}, status=400)
+    #저장정보 전달(디테일)
+    def get_user_schedule_detail(self, request, id='', date=''):
+        if Member.objects.filter(id=id).exists():
+            print("z")
         return JsonResponse({"message" : "err"}, status=400)
 
     # 음식점 정보 전달
@@ -95,7 +101,7 @@ class RecommendTravle(viewsets.GenericViewSet, View):
             - lid2 : 코스2
             - lid3 : 코스3
             - lid4 : 코스4
-            - isSaved : ?
+            - savedDate : ?
             - sidB : 아침
             - sidL : 점심
             - sidD : 저녁

@@ -1,7 +1,7 @@
 
 from django.db import models
 from member.models import Member
-
+from datetime import datetime
 
 
 
@@ -104,7 +104,7 @@ class ZzimLandCourse(models.Model):
     lid3 = models.CharField(max_length=30, null=True)                 #3코스
     lid4 = models.CharField(max_length=30, null=True)                 #4코스
     isSaved = models.CharField(max_length=30, null=True)                      #코스저장여부
-    savedDate = models.CharField(max_length=100, null=True)                   #코스 저장일자                   
+    savedDate = models.CharField(max_length=100, null=True, default=datetime.now())                   #코스 저장일자                   
 
     class Meta:
         db_table = "zzimLandCourses"
