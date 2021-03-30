@@ -41,7 +41,6 @@ class UserInfo(viewsets.GenericViewSet, View):
             result_set = []
             #음식점 정보 가져오기
             store = Store.objects.get(sid=sid)
-            
             store_set = { "sid" : store.sid,
                             "store_name" : store.store_name,
                             "branch" : store.branch,
