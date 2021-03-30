@@ -5,6 +5,7 @@ from django.views import View
 from django.http import Http404, HttpResponse, JsonResponse
 from .models import Landmark, ZzimStoreCourse, ZzimLandCourse, Store, Menu
 from member.models import Member
+from backend.settings import T_KEY
 from .serializers import UserOptionSerializer, SaveOptionSerializer
 from django.core import serializers
 from drf_yasg import openapi
@@ -20,17 +21,231 @@ import requests
 import random
 class UserInfo(viewsets.GenericViewSet, View):
     # 저장 정보 전달(아침점심저녁 간단정보)
-    def get_user_schedule(self, request, id=''):
-        if Member.objects.filter(id = id).exists() :
+    def get_user_schedule(self, request, num=''):
+        if Member.objects.filter(num = num).exists() :
             #예약 음식 가져오기
-            zzimlist = ZzimStoreCourse.objects.filter(id=id)
+            zzimlist = ZzimStoreCourse.objects.filter(num = num)
+            result_set = []
+            for row in zzimlist.values_list() :
+                add_set = { 
+                            "sidB" : row[2],
+                            "isSavedB" : row[3],
+                            "sidL" : row[4],
+                            "isSavedL" : row[5],
+                            "sidD" : row[6],
+                            "isSavedD" : row[7],
+                            "savedDate" : row[8]
+                            }
+                
+                result_set.append(add_set)
+            return JsonResponse({"message" : result_set}, status=200)
 
 
         return JsonResponse({"message" : "err"}, status=400)
     #저장정보 전달(디테일)
-    def get_user_schedule_detail(self, request, id='', date=''):
-        if Member.objects.filter(id=id).exists():
-            print("z")
+    def get_user_schedule_detail(self, request, num='', date=''):
+        if Member.objects.filter(num = num).exists():
+            #당일 예약은 1개
+            zzimlist = ZzimStoreCourse.objects.filter(num = num, savedDate=date)
+            zzimlandlist = ZzimLandCourse.objects.filter(num = num, savedDate=date)
+            print(zzimlist[0].sidB)
+            result_store = []
+            result_land = []
+            #아침
+            if Store.objects.filter(sid=zzimlist[0].sidB).exists():
+                store = Store.objects.get(sid=zzimlist[0].sidB)
+                store_set = { "sidB" : store.sid,
+                                "store_name" : store.store_name,
+                                "branch" : store.branch,
+                                "area" : store.area,
+                                "tel" : store.tel,
+                                "address" : store.address,
+                                "latitude" : store.latitude,
+                                "logitude" : store.logitude,
+                                "review_cnt" : store.review_cnt,
+                                "category" : store.category
+                }
+            else : 
+                store_set = { "sidB" : "NULL"}
+            result_store.append(store_set)
+            #점심
+            if Store.objects.filter(sid=zzimlist[0].sidL).exists():
+                store = Store.objects.get(sid=zzimlist[0].sidL)
+                store_set = { "sidL" : store.sid,
+                                "store_name" : store.store_name,
+                                "branch" : store.branch,
+                                "area" : store.area,
+                                "tel" : store.tel,
+                                "address" : store.address,
+                                "latitude" : store.latitude,
+                                "logitude" : store.logitude,
+                                "review_cnt" : store.review_cnt,
+                                "category" : store.category
+                }
+            else :
+                store_set = { "sidB" : "NULL"}    
+            result_store.append(store_set)
+            #저녁
+            if Store.objects.filter(sid=zzimlist[0].sidD).exists():
+                store = Store.objects.get(sid=zzimlist[0].sidD)
+                store_set = { "sidD" : store.sid,
+                                "store_name" : store.store_name,
+                                "branch" : store.branch,
+                                "area" : store.area,
+                                "tel" : store.tel,
+                                "address" : store.address,
+                                "latitude" : store.latitude,
+                                "logitude" : store.logitude,
+                                "review_cnt" : store.review_cnt,
+                                "category" : store.category
+                }
+            else :
+                store_set = { "sidB" : "NULL"}
+            result_store.append(store_set)
+            if Landmark.objects.filter(lid = zzimlandlist[0].lid1).exists() :
+                land = Landmark.objects.get(lid = zzimlandlist[0].lid1)
+                add_set = { "lid1" : land.lid,
+                            "landmark_name" : land.landmark_name,
+                            "addr" : land.addr,
+                            "latitude" : land.latitude,
+                            "longitude" : land.logitude,
+                            "facility" : land.facility,
+                            "park" : land.park,
+                            "desc" : land.desc,
+                            "tel" : land.tel,
+                            "theme" : land.theme
+                            }
+            else :
+                add_set = { "lid1" : "NULL"}
+            result_land.append(add_set)
+            if Landmark.objects.filter(lid = zzimlandlist[0].lid2).exists() :
+                land = Landmark.objects.get(lid = zzimlandlist[0].lid2)
+                add_set = { "lid2" : land.lid,
+                            "landmark_name" : land.landmark_name,
+                            "addr" : land.addr,
+                            "latitude" : land.latitude,
+                            "longitude" : land.logitude,
+                            "facility" : land.facility,
+                            "park" : land.park,
+                            "desc" : land.desc,
+                            "tel" : land.tel,
+                            "theme" : land.theme
+                            }
+            else :
+                add_set = { "lid2" : "NULL"}
+            result_land.append(add_set)
+            if Landmark.objects.filter(lid = zzimlandlist[0].lid3).exists() :
+                land = Landmark.objects.get(lid = zzimlandlist[0].lid3)
+                add_set = { "lid3" : land.lid,
+                            "landmark_name" : land.landmark_name,
+                            "addr" : land.addr,
+                            "latitude" : land.latitude,
+                            "longitude" : land.logitude,
+                            "facility" : land.facility,
+                            "park" : land.park,
+                            "desc" : land.desc,
+                            "tel" : land.tel,
+                            "theme" : land.theme
+                            }
+            else :
+                add_set = { "lid3" : "NULL"}
+            result_land.append(add_set)
+            if Landmark.objects.filter(lid = zzimlandlist[0].lid4).exists() :
+                land = Landmark.objects.get(lid = zzimlandlist[0].lid4)
+                add_set = { "lid4" : land.lid,
+                            "landmark_name" : land.landmark_name,
+                            "addr" : land.addr,
+                            "latitude" : land.latitude,
+                            "longitude" : land.logitude,
+                            "facility" : land.facility,
+                            "park" : land.park,
+                            "desc" : land.desc,
+                            "tel" : land.tel,
+                            "theme" : land.theme
+                            }
+            else :
+                add_set = { "lid4" : "NULL"}
+            result_land.append(add_set)
+            distance = []
+            #1to2
+            if (zzimlandlist[0].lid2 !="NULL") :
+                land1 = Landmark.objects.get(lid = zzimlandlist[0].lid1)
+                land2 = Landmark.objects.get(lid = zzimlandlist[0].lid2)
+                data = {
+                    "startX" : land1.logitude,
+                    "startY" : land1.latitude,
+                    "endX" : land2.logitude,
+                    "endY" : land2.latitude,
+                    "reqCoordType" : "WGS84GEO",
+                    "resCchOption" : "0",
+                    "trafficInfo" : "N"
+                }
+                data = json.dumps(data)
+                
+                headers = {'Content-Type': 'application/json', 'appKey': T_KEY}
+                url = "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result"
+                res = requests.post(url, data=data, headers=headers)
+                json_object = res.json()
+                totalDistance = json_object["features"][0]["properties"]["totalDistance"]
+                totalDistance = totalDistance/1000
+                totalDistance = round(totalDistance,1)
+                add_set = {"one_two" : totalDistance}
+            else :
+                add_set = {"one_two" : "NULL"}
+            distance.append(add_set)
+            #2to3
+            if (zzimlandlist[0].lid3 !="NULL") :
+                land1 = Landmark.objects.get(lid = zzimlandlist[0].lid2)
+                land2 = Landmark.objects.get(lid = zzimlandlist[0].lid3)
+                data = {
+                    "startX" : land1.logitude,
+                    "startY" : land1.latitude,
+                    "endX" : land2.logitude,
+                    "endY" : land2.latitude,
+                    "reqCoordType" : "WGS84GEO",
+                    "resCchOption" : "0",
+                    "trafficInfo" : "N"
+                }
+                data = json.dumps(data)
+                
+                headers = {'Content-Type': 'application/json', 'appKey': T_KEY}
+                url = "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result"
+                res = requests.post(url, data=data, headers=headers)
+                json_object = res.json()
+                totalDistance = json_object["features"][0]["properties"]["totalDistance"]
+                totalDistance = totalDistance/1000
+                totalDistance = round(totalDistance,1)
+                add_set = {"two_three" : totalDistance}
+            else :
+                add_set = {"two_three" : "NULL"}
+            distance.append(add_set)
+            #3to4
+            if (zzimlandlist[0].lid4 !="NULL") :
+                land1 = Landmark.objects.get(lid = zzimlandlist[0].lid3)
+                land2 = Landmark.objects.get(lid = zzimlandlist[0].lid4)
+                data = {
+                    "startX" : land1.logitude,
+                    "startY" : land1.latitude,
+                    "endX" : land2.logitude,
+                    "endY" : land2.latitude,
+                    "reqCoordType" : "WGS84GEO",
+                    "resCchOption" : "0",
+                    "trafficInfo" : "N"
+                }
+                data = json.dumps(data)
+                
+                headers = {'Content-Type': 'application/json', 'appKey': T_KEY}
+                url = "https://apis.openapi.sk.com/tmap/routes?version=1&format=json&callback=result"
+                res = requests.post(url, data=data, headers=headers)
+                json_object = res.json()
+                totalDistance = json_object["features"][0]["properties"]["totalDistance"]
+                totalDistance = totalDistance/1000
+                totalDistance = round(totalDistance,1)
+                add_set = {"three_four" : totalDistance}
+            else :
+                add_set = {"three_four" : "NULL"}
+            distance.append(add_set)
+            return JsonResponse({"store_info" : result_store, "land_info" : result_land, "distance" : distance}, status=200)
         return JsonResponse({"message" : "err"}, status=400)
 
     # 음식점 정보 전달
@@ -66,6 +281,7 @@ class UserInfo(viewsets.GenericViewSet, View):
                             "sid" : row[1],
                             "menu_name" : row[2],
                             "price" : row[3]
+                            
                             }
                     menu_info.append(add_set)
                 result_set.append(menu_info)
@@ -110,13 +326,7 @@ class RecommendTravle(viewsets.GenericViewSet, View):
         data = json.loads(request.body)
         
         if Member.objects.filter(id = data["id"]).exists():
-            print("문제")
             user = Member.objects.get(id=data["id"])
-            print(Member.objects.get(id=data["id"]).num)
-            print(data["lid1"])
-            print(data["lid2"])
-            print(data["lid3"])
-            print(data["lid4"])
             ZzimLandCourse.objects.create(
                 num = str(user.num),
                 #유효성 검사해야함
@@ -124,9 +334,9 @@ class RecommendTravle(viewsets.GenericViewSet, View):
                 lid2 = data["lid2"],
                 lid3 = data["lid3"],
                 lid4 = data["lid4"],
-                saveDate = DateFormat(datetime.now()).format('Ymd')
-
-            ).save()
+                savedDate =data["savedDate"]
+                
+            )
             #각 데이터가 있는지 확인해야함
             ZzimStoreCourse.objects.create(
                 num = int(user.num),
@@ -135,8 +345,9 @@ class RecommendTravle(viewsets.GenericViewSet, View):
                 sidL = data["sidL"],
                 isSavedL = "False",
                 sidD = data["sidD"],
-                isSavedD = "False"
-            ).save()
+                isSavedD = "False",
+                savedDate =data["savedDate"]
+            )
             return HttpResponse(status=200)
         return JsonResponse({"message" : "Error"}, status=400)
 
