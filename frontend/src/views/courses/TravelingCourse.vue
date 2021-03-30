@@ -29,8 +29,8 @@ export default {
   },
   methods: {
       moveToCourseCheck() {
-      console.log('코스확인으로 이동')
-      this.$router.push({name : "CourseCheck"})
+        console.log('코스확인으로 이동')
+        this.$router.push({name : "CourseCheck"})
       },
   },
 }

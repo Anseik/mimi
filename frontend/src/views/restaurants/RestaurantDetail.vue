@@ -1,7 +1,8 @@
 <template>
-  <div class="backimg" id="container">
-    <h1>음식점 디테일 페이지</h1>
-    <h2>음식점 사진, 이름, 평점 자리</h2>
+  <div id="container">
+    <v-img src="@/assets/busan3.jpg" class="alignend" height="250px">
+      <div class="fill-height bottom-gradient text-type">가게 이름(★5.0)</div>
+    </v-img>
     <RestaurantDetailCategory></RestaurantDetailCategory>
   </div>
 </template>
@@ -18,8 +19,14 @@ export default {
 </script>
 
 <style scoped>
-.backimg {
-  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
-  min-height: 650px;
+.bottom-gradient {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6) 10%, transparent 100px);
+}
+.text-type {
+  color: white;
+  font-size: 40px;
+}
+.alignend {
+  align-items: flex-end;
 }
 </style>

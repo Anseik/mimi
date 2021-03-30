@@ -3,21 +3,22 @@
   <v-card>
       <v-tabs
         dark
-        background-color= "#F3E5F5"
-        show-arrows
+        background-color= "#EEEEEE"
+        centered
+        grow
       >
-        <v-tab class="categoty-imfo" @click="clickCategory('정보')"><span class="category-color">기본정보</span>
+        <v-tab @click="clickCategory('정보')"><span class="category-color">기본정보</span>
         </v-tab>
-        <v-tab class="categoty-imfo" @click="clickCategory('리뷰')"><span class="category-color">리뷰</span>
+        <v-tab @click="clickCategory('리뷰')"><span class="category-color">리뷰</span>
         </v-tab>
-        <v-tab class="categoty-imfo" @click="clickCategory('지도')"><span class="category-color">지도</span>
+        <v-tab @click="clickCategory('지도')"><span class="category-color">지도</span>
         </v-tab>
 
       </v-tabs>
     </v-card>
 
     <div v-if="isInfo">
-      <RestaurantDetailInfo ></RestaurantDetailInfo>
+      <RestaurantDetailInfo></RestaurantDetailInfo>
     </div>
     <div v-else-if="isReview">
       <RestaurantDetailReview></RestaurantDetailReview>
@@ -73,7 +74,7 @@ export default {
 <style scoped>
 .category-color {
   font-weight: 700;
-  color: rgb(50, 121, 67);
+  color: #6A1B9A;
   font-size: 125%;
 }
 .categoty-imfo {
