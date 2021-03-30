@@ -5,7 +5,7 @@
         dense
       >
         <v-timeline-item
-          color="green"
+          color="#6A1B9A"
           small
         >
           <v-row class="pt-1 pr-3">

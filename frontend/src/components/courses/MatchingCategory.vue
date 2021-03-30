@@ -5,11 +5,14 @@
     <v-menu >
       <v-list>
         <v-list-item
-        v-for="item in items"
-        :key="item"
-        link
+        
         >
-        <v-list-item-title v-text="item"></v-list-item-title>
+        <!-- <v-list-item
+        v-for="item in items"
+        :key="index"
+        link
+        > -->
+        <!-- <v-list-item-title v-text="item"></v-list-item-title> -->
         </v-list-item>
       </v-list>
     </v-menu>
@@ -47,13 +50,13 @@
     </v-chip>
     <br>
     <br>
-    <RestaurantList></RestaurantList>
+    <!-- <RestaurantList></RestaurantList> -->
   </div>
 </template>
 
 <script>
 export default {
-    name: 'MatchingCategory',
+    // name: 'MatchingCategory',
 }
 </script>
 

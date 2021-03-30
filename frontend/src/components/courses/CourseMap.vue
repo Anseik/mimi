@@ -1,17 +1,19 @@
 <template>
-  <div id="map" class="map-container" style="width:400px;height:200px;"></div>
+  <div id="map" class="map-container" style="max-width:800px;height:200px;"></div>
 </template>
 
 <script>
 export default {
     name: 'CourseMap',
     async mounted() {
+        
         const container = document.getElementById('map');
+        
         const options = {
             center: new window.kakao.maps.LatLng(36.10253441899348, 128.41969982214542),
             level: 3
         };
-
+        
         const map = new window.kakao.maps.Map(container, options);
         console.log(map);
 
@@ -42,8 +44,8 @@ export default {
         const polyline = new window.kakao.maps.Polyline({
             path: linePath, // 선을 구성하는 좌표배열
             strokeWeight: 5, // 선의 두께
-            strokeColor: '#356859', // 선의 색깔
-            strokeOpacity: 0.7, // 선의 불투명 - 1에서 0 사이의 값이며 0에 가까울수록 투명
+            strokeColor: '#4A148C', // 선의 색깔
+            strokeOpacity: 0.8, // 선의 불투명 - 1에서 0 사이의 값이며 0에 가까울수록 투명
             strokeStyle: 'solid' // 선의 스타일
         });
 
@@ -57,15 +59,15 @@ export default {
     
             let imageSrc = "";
             if (i == 0) {
-                imageSrc = "https://i.ibb.co/QXWYJcH/pin1.png";
+                imageSrc = "https://i.ibb.co/6RxfQyd/pin1.png";
             } else if (i == 1) {
-                imageSrc = "https://i.ibb.co/Yjz4mr6/pin2.png";
+                imageSrc = "https://i.ibb.co/jy9g2LX/pin2.png";
             } else if (i == 2) {
-                imageSrc = "https://i.ibb.co/RPBRGX5/pin3.png";
+                imageSrc = "https://i.ibb.co/1MLCC3s/pin3.png";
             } else {
-                imageSrc = "https://i.ibb.co/xDfqkpn/pin4.png";
+                imageSrc = "https://i.ibb.co/fMMxB05/pin4.png";
             }
-
+            console.log(positions[i])
             addMarker(positions[i], imageSrc)
 
         }
@@ -108,7 +110,7 @@ export default {
 .map-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
 }
