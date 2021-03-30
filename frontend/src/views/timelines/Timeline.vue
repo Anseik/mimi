@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="backimg" id="container">
       <v-timeline
         align-top
         dense
       >
         <v-timeline-item
-          color="green"
+          color="#6A1B9A"
           small
         >
           <v-row class="pt-1 pr-3">
@@ -87,6 +87,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.backimg {
+  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
+  min-height: 650px;
+}
 </style>

@@ -3,7 +3,7 @@
   <v-card>
       <v-tabs
         dark
-        background-color= "rgb(255, 218, 115)"
+        background-color= "#F3E5F5"
         show-arrows
       >
         <v-tab class="categoty-imfo" @click="clickCategory('정보')"><span class="category-color">기본정보</span>

@@ -2,19 +2,6 @@
   <div class="text-center">
     <br>
     <br>
-    <v-menu >
-      <v-list>
-        <v-list-item
-        v-for="item in items"
-        :key="item"
-        link
-        >
-        <v-list-item-title v-text="item"></v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-  
-
     <v-chip
       class="ma-3"
       color="indigo darken-3"
@@ -29,8 +16,6 @@
     >
       80% 이상
     </v-chip>
-
-
     <v-chip
       class="ma-2"
       color="indigo darken-3"
@@ -47,13 +32,13 @@
     </v-chip>
     <br>
     <br>
-    <RestaurantList></RestaurantList>
+    <!-- <RestaurantList></RestaurantList> -->
   </div>
 </template>
 
 <script>
 export default {
-    name: 'MatchingCategory',
+    // name: 'MatchingCategory',
 }
 </script>
 

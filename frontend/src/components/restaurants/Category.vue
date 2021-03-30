@@ -1,20 +1,21 @@
 <template>
   <div>
-    <v-card>
+    <v-card :elevation= "0">
       <v-tabs
         dark
-        background-color= "rgb(255, 218, 115)"
-        show-arrows
+        background-color= "#EEEEEE"
+        centered
+        grow
       >
-        <v-tab class="categoty-imfo" @click="clickCategory('근처')"><span class="category-color">주변맛집</span>
+        <v-tab @click="clickCategory('근처')"><span class="category-color">주변맛집</span>
         </v-tab>
-        <v-tab class="categoty-imfo" @click="clickCategory('키워드')"><span class="category-color">키워드맛집</span>
+        <v-tab @click="clickCategory('키워드')"><span class="category-color">키워드맛집</span>
         </v-tab>
 
       </v-tabs>
     </v-card>
     <div v-if="isNearby">
-    <Nearby ></Nearby>
+    <Nearby></Nearby>
     </div>
     <div v-else-if="!isNearby">
     <Keyword></Keyword>
@@ -62,12 +63,8 @@ export default {
 <style scoped>
 .category-color {
   font-weight: 700;
-  color: rgb(50, 121, 67);
+  color: black;
   font-size: 125%;
-}
-.categoty-imfo {
-  padding-left: 60px;
-  padding-right: 60px;
 }
 
 </style>

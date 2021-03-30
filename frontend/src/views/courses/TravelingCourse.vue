@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="container">
     <h3>여행 코스 추천</h3>
     <v-col align="end">
       <v-btn
           class="ma-2"
-          color="#FFFBE6"
+          color="#EDE7F6"
           @click="moveToCourseCheck"
           >
           <span class="ts">코스 확인</span>
@@ -36,9 +36,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .ts {
-    color: #356859;
+    color: #6A1B9A;
     font-weight: 900;
 }
 </style>

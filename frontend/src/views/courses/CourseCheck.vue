@@ -1,23 +1,22 @@
 <template>
-  <div>
-      <h3>여행 코스 확인</h3>
+  <div id="container">
       <v-col align="end">
         <v-btn
             class="ma-2"
-            color="#FFFBE6"
-            @click="moveToCourseCheck"
-            >
-            <span class="ts">다이어리 저장</span>
-        </v-btn>
-        </v-col>
-      <Course align="center"></Course>
-      <v-col align="end">
-        <v-btn
-            class="ma-2"
-            color="#FFFBE6"
+            color="#6A1B9A"
+            outlined
             >
             <span class="ts">경로 최적화</span>
         </v-btn>
+        <v-btn
+            class="ma-2"
+            color="#6A1B9A"
+            outlined
+           
+            >
+            <span class="ts">다이어리 저장</span>
+        </v-btn>
+        <Course align="center" class="pt-6"></Course>
         </v-col>
       <CourseMap align="center"></CourseMap>
       <Category></Category>
@@ -35,12 +34,13 @@ export default {
         Course,
         CourseMap,
     },
+    
 }
 </script>
 
-<style>
+<style scoped>
     .ts {
-        color: #356859;
+        color: #6A1B9A;
         font-weight: 900;
     }
 </style>
