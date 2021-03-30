@@ -96,3 +96,14 @@ class UserOptionSerializer(serializers.Serializer):
     user_date = serializers.DateField()
     user_location = serializers.CharField()
     user_thema = serializers.CharField()
+
+class SaveOptionSerializer(serializers.Serializer):
+    id = serializers.CharField()
+    lid1 = serializers.CharField()
+    lid2 = serializers.CharField()
+    lid3 = serializers.CharField()
+    lid4 = serializers.CharField()
+    savedDate = serializers.CharField()
+    sidB = serializers.CharField()
+    sidL = serializers.CharField()
+    sidD = serializers.CharField()

@@ -91,7 +91,7 @@ export default {
       }
     },
     signup() {
-      const serverUrl = process.env.VUE_APP_SERVER_URL
+      const serverUrl = process.env.VUE_APP_LOCAL_URL
       axios.post(`${serverUrl}/member/sign-up`, this.form)
         .then(res => {
           console.log(res)
