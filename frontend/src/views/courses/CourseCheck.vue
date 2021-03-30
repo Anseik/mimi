@@ -1,23 +1,22 @@
 <template>
-  <div class="backimgg" id="container">
-      <h3>여행 코스 확인</h3>
+  <div id="container">
       <v-col align="end">
         <v-btn
             class="ma-2"
-            color="#AD1457"
+            color="#6A1B9A"
             outlined
             >
-            <span class="ts2">경로 최적화</span>
+            <span class="ts">경로 최적화</span>
         </v-btn>
         <v-btn
             class="ma-2"
             color="#6A1B9A"
-            @click="moveToCourseCheck"
             outlined
+           
             >
             <span class="ts">다이어리 저장</span>
         </v-btn>
-        <Course align="center"></Course>
+        <Course align="center" class="pt-6"></Course>
         </v-col>
       <CourseMap align="center"></CourseMap>
       <Category></Category>
@@ -35,6 +34,7 @@ export default {
         Course,
         CourseMap,
     },
+    
 }
 </script>
 
@@ -42,13 +42,5 @@ export default {
     .ts {
         color: #6A1B9A;
         font-weight: 900;
-    }
-    .ts2 {
-        color: #AD1457;
-        font-weight: 900;
-    }
-    .backimgg {
-        background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
-        min-height: 650px;
     }
 </style>

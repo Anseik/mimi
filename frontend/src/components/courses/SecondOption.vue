@@ -5,14 +5,14 @@
         <v-col cols="12">
             <div class="pa-6">
             <v-chip-group
-                active-class="green--text"
+                active-class="#AD1457"
                 column
             >
                 <v-chip
                 v-for="tag in tags"
                 :key="tag"
                 outlined
-                color="#356859"
+                color="#AD1457"
                 >
                 {{ tag }}
                 </v-chip>
@@ -49,6 +49,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

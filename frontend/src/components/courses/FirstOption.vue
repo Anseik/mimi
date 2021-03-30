@@ -5,8 +5,8 @@
     <v-row justify="center">
         <v-date-picker
         v-model="picker"
-        color="#356859"
-        header-color="#356859"
+        color="#6A1B9A"
+        header-color="#6A1B9A"
         full-width
         ></v-date-picker>
     </v-row>
@@ -25,6 +25,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>
