@@ -1,7 +1,7 @@
 <template>
   <div class="backgroundimg" id="container">
     <div >
-      <img src="@/assets/mimi_logo.png" alt="" width="50%" style="margin:25% 25% 5% 25%;">
+      <img src="@/assets/mimi_logo.png" alt="" width="60%" style="margin:10% 20% 5% 20%;">
     </div>
       <v-text-field
           solo
