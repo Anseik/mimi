@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     login: function () {
-      const serverUrl = process.env.VUE_APP_LOCAL_URL
+      const serverUrl = process.env.VUE_APP_SERVER_URL
       console.log(serverUrl)
       axios.post(`${serverUrl}/member/sign-in`, {
         id: this.form.id,

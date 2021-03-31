@@ -1,7 +1,7 @@
 
 from django.db import models
 from member.models import Member
-
+from datetime import datetime
 
 
 
@@ -88,7 +88,8 @@ class ZzimStoreCourse(models.Model):
     sidL = models.CharField(max_length=30, null=True)                       #점심코스(식당)  ( stores.sid )
     isSavedL = models.CharField(max_length=30, null=True)                    #점심저장여부                 
     sidD = models.CharField(max_length=30, null=True)                        #저녁코스(식당)  ( stores.sid )
-    isSavedD = models.CharField(max_length=30, null=True)                     #저녁저장여부                 
+    isSavedD = models.CharField(max_length=30, null=True)                     #저녁저장여부  
+    savedDate = models.CharField(max_length=100, null=True)                   #코스 저장일자                  
 
     class Meta:
         db_table = "zzimStoreCourses"
@@ -103,7 +104,15 @@ class ZzimLandCourse(models.Model):
     lid3 = models.CharField(max_length=30, null=True)                 #3코스
     lid4 = models.CharField(max_length=30, null=True)                 #4코스
     isSaved = models.CharField(max_length=30, null=True)                      #코스저장여부
-    savedDate = models.CharField(max_length=100, null=True)                   #코스 저장일자                   
+    savedDate = models.CharField(max_length=100, null=True, default=datetime.now())                   #코스 저장일자                   
 
     class Meta:
         db_table = "zzimLandCourses"
+
+class RScoreTable(models.Model):
+  t1 = models.CharField(max_length=50, null=True)
+  t2 = models.CharField(max_length=50, null=True)
+  score = models.DecimalField(decimal_places=3,max_digits=4)
+  
+  class Meta:
+        db_table = "rScoreTables"

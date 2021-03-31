@@ -21,7 +21,9 @@ import jwt
 #1. ID찾기, 2. PW찾기 - 이메일 중복여부 확인, 3. PW변경
 class MemberFix(viewsets.ModelViewSet, View):
     def aaa(self, request):
-        return JsonResponse({"message" : "EXISTS_ID"}, status=200)
+        if Member.objects.filter(id = "ehdrjf337@gmail.com").exists():
+                return JsonResponse({"message" : "EXISTS_ID"}, status=400)
+        return JsonResponse({"message" : "aaa"}, status=200)
     #ID찾기
     def find_Id(self,request, id='', birthday=''):
         serializer_class = SearchMemberIdSerializer
@@ -84,7 +86,7 @@ class MemberView(viewsets.GenericViewSet, View):
             #전처리 한번 필요
             
             curr_max_num = Member.objects.all().count() + 949437
-            
+            print(curr_max_num)
             Member.objects.create(
                 num = curr_max_num,
                 id = data["id"],

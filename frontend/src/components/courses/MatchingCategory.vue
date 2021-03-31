@@ -1,59 +1,42 @@
 <template>
-  <div class="text-center">
-    <br>
-    <br>
-    <v-menu >
-      <v-list>
-        <v-list-item
-        v-for="item in items"
-        :key="item"
-        link
-        >
-        <v-list-item-title v-text="item"></v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
-  
-
-    <v-chip
-      class="ma-3"
-      color="indigo darken-3"
-      outlined
-    >
-      전체
-    </v-chip>
-    <v-chip
-      class="ma-3"
-      color="indigo darken-3"
-      outlined
-    >
-      80% 이상
-    </v-chip>
-
-
-    <v-chip
-      class="ma-2"
-      color="indigo darken-3"
-      outlined
-    >
-      50% 이상
-    </v-chip>
-    <v-chip
-      class="ma-2"
-      color="indigo darken-3"
-      outlined
-    >
-      50% 미만
-    </v-chip>
-    <br>
-    <br>
-    <RestaurantList></RestaurantList>
+  <div>
+    <div class="text-center category-background">
+      <v-chip
+        class="ma-3"
+        color="indigo darken-3"
+        outlined
+      >
+        전체
+      </v-chip>
+      <v-chip
+        class="ma-3"
+        color="indigo darken-3"
+        outlined
+      >
+        80% 이상
+      </v-chip>
+      <v-chip
+        class="ma-2"
+        color="indigo darken-3"
+        outlined
+      >
+        50% 이상
+      </v-chip>
+      <v-chip
+        class="ma-2"
+        color="indigo darken-3"
+        outlined
+      >
+        50% 미만
+      </v-chip>
+      <!-- <RestaurantList></RestaurantList> -->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'MatchingCategory',
+    // name: 'MatchingCategory',
 }
 </script>
 
@@ -66,6 +49,9 @@ export default {
 .categoty-imfo {
   padding-left: 60px;
   padding-right: 60px;
+}
+.category-background {
+  background-color: #EEEEEE;
 }
 
 </style>

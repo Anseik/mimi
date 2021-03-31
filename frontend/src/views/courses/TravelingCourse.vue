@@ -1,10 +1,10 @@
 <template>
-  <div class="backimg" id="container">
+  <div id="container">
     <h3>여행 코스 추천</h3>
     <v-col align="end">
       <v-btn
           class="ma-2"
-          color="#FFFBE6"
+          color="#EDE7F6"
           @click="moveToCourseCheck"
           >
           <span class="ts">코스 확인</span>
@@ -29,20 +29,16 @@ export default {
   },
   methods: {
       moveToCourseCheck() {
-      console.log('코스확인으로 이동')
-      this.$router.push({name : "CourseCheck"})
+        console.log('코스확인으로 이동')
+        this.$router.push({name : "CourseCheck"})
       },
   },
 }
 </script>
 
-<style>
+<style scoped>
 .ts {
-    color: #356859;
+    color: #6A1B9A;
     font-weight: 900;
-}
-.backimg {
-  background-image: url(https://i.ibb.co/C6SCsQT/backimg.png);
-  min-height: 650px;
 }
 </style>

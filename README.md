@@ -117,7 +117,7 @@
 ```sh
 anaconda 20.11version 설치 (python 3.8.5)
 python -m venv env - 가상환경 설치
-source ./env/Scrupts/activate - 가상환경 실행
+source ./env/Scripts/activate - 가상환경 실행
 cd sub2/backend
 pip install -r requirements.txt
 python manage.py makemigrations
@@ -156,6 +156,12 @@ npm run serve
 ### 📆일정
 
 ![image-20210324225357057](README.assets/image-20210324225357057.png)
+
+
+
+### 🌈Color Map
+
+![image-20210330173037993](README.assets/image-20210330173037993.png)
 
 
 

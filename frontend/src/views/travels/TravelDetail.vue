@@ -1,8 +1,9 @@
 <template>
   <div class="backimg" id="container">
-      <v-card width="350px" style="margin-top: 20px; margin-bottom:20px; margin-left:30px;">
+    <br>
+      <v-card width="84%" style="margin: 2% 8% 0% 8%">
         <template>
-          <v-img src="@/assets/mimi_logo.png" width="100px"></v-img>
+          <v-img src="@/assets/mimi_logo.png" width="80%" style="margin-left: 10%;"></v-img>
           <v-card-title>
             여행지
           </v-card-title>
