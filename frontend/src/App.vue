@@ -21,6 +21,11 @@ export default {
 </script>
 <style>
 #container {
-     font-family: "Do Hyeon", sans-serif;
+  font-family: "Do Hyeon", sans-serif;
+}
+@font-face {
+  font-family: "NanumBarunGothic";
+  src: local("NanumBarunGothic"),
+    url(./fonts/NanumBarunGothic.ttf) format("truetype");
 }
 </style>
