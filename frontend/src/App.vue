@@ -1,24 +1,21 @@
 <template>
-  <v-app id="app">
-    <toolbar />
-    <drawer />
-    <route-view />
-    <go-top />
+  <v-app>
+    <v-main>
+      <router-view></router-view>
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import Drawer from "@/components/Drawer";
-import Toolbar from "@/components/Toolbar";
-import RouteView from "@/components/RouteView";
-import GoTop from "@/components/GoTop";
-
 export default {
+  name: 'App',
+
   components: {
-    Drawer,
-    Toolbar,
-    RouteView,
-    GoTop
+
   },
+
+  data: () => ({
+    //
+  }),
 };
 </script>
